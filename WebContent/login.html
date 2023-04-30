@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="潇湘毕设选题系统 - 程序设计：信息学院计应教研室玉米子">
+    <meta name="author" content="玉米子">
+
+    <!-- 引入样式 -->
+    <link href="library/bootstrap-2.3.2/css/bootstrap.css" rel="stylesheet">
+    <link href="library/bootstrap-2.3.2/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5填充程序，用于IE6-8对HTML5元素的支持 -->
+    <!--[if lt IE 9]>
+        <script src="library/html5shiv-3.6.2pre/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- 图标 -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="common/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="common/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="common/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="common/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="common/ico/favicon.png">
+
+    <title>登录 - 毕设选题系统</title>
+    <link href="common/css/login.css" rel="stylesheet">
+    <link href="common/css/common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h1 class="padding-bottom">毕设选题系统</h1>
+            <h2 class="form-signin-heading lead">登录</h2>
+        </div>
+        <form class="form-signin" method="post">
+            <!-- 账号输入框 -->
+            <div>
+                <label>账号：</label>
+                <input type="text" class="input-block-level" name="username" placeholder="请输入账号">
+            </div>
+            <!-- 密码输入框 -->
+            <div>
+                <label>密码：</label>
+                <input type="password" class="input-block-level" name="password" placeholder="请输入密码" autocomplete="off">
+            </div>
+            <div class="text-right">
+                <button class="btn btn-large btn-primary" type="submit">登录</button>
+            </div>
+        </form>
+
+        <div class="text-center">
+            <a href="#notHaveAccountModal" role="button" class="btn" data-toggle="modal">没有账号？</a>
+        </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- 没有账号模态框 -->
+    <div id="notHaveAccountModal" class="modal hide fade" tabindex="-1" role="dialog"
+        aria-labelledby="notHaveAccountModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="notHaveAccountModalLabel">没有账号</h3>
+        </div>
+        <div class="modal-body">
+            <p>请联系老师处理</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">确定</button>
+        </div>
+    </div>
+
+    <!-- 引入JavaScript脚本文件 -->
+    <!-- 放置在文档末尾，以便页面加载更快 -->
+    <script src="library/jquery-1.9.1/jquery.js"></script>
+    <script src="library/bootstrap-2.3.2/js/bootstrap.js"></script>
+</body>
+
+</html>

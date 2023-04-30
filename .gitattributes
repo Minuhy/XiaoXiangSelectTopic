@@ -1,0 +1,11 @@
+# 不计入代码统计
+
+# 前端框架 Bootstrap2.3.2
+WebContent/common/bootstrap-2.3.2/* linguist-vendored
+WebContent/common/html5shiv-3.6.2pre/* linguist-vendored
+
+# 前端JQuery
+WebContent/common/jquery-1.9.1/* linguist-vendored
+
+# 库文件
+WebContent/WEB-INF/lib/* linguist-vendored
