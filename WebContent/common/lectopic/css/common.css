@@ -17,3 +17,42 @@
 .margin-10p-up{
     margin-top: 10%;
 }
+
+.margin-10all{
+    margin: 10px;
+}
+
+.margin-5all{
+    margin: 5px;
+}
+
+
+.margin-2all{
+    margin: 2px;
+}
+
+.margin-center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 导航栏 */
+.nav1 li{
+    display:inline;
+    line-height: 40px;
+}
+
+.brand1 img{
+    width: 36px;
+    height: 36px;
+}
+
+.brand1{
+    line-height: 36px;
+}
+
+.btn-nav{
+    text-align: center;
+    width: 40px;
+    height: 48px;
+}

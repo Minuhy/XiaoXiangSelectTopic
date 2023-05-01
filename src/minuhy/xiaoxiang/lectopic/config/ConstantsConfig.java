@@ -3,6 +3,10 @@ package minuhy.xiaoxiang.lectopic.config;
 public class ConstantsConfig {
 	public static final String SESSION_USER_BEAN_NAME = "sessionUserBean";
 	public static final String SESSION_LOGIN_SOURCE = "sessionLoginSource";
+
+	public static final String SESSION_CAPTCHA = "sessionCaptcha";
+	
+	public static final String SESSION_ADMIN_REGISTER = "sessionAdminRegister";
 	
 
 	public static final String REQUEST_TIPS_STATE = "requestTipsState";

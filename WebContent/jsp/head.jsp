@@ -19,8 +19,8 @@
 <![endif]-->
 
 <!-- 图标 -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%= currentPath %>/common/lectopic/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= currentPath %>/common/lectopic/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= currentPath %>/common/lectopic/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="<%= currentPath %>/common/lectopic/ico/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="<%= currentPath %>/common/lectopic/ico/favicon.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%= currentPath %>/common/lectopic/ico/apple-touch-icon-144-precomposed.gif">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= currentPath %>/common/lectopic/ico/apple-touch-icon-114-precomposed.gif">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= currentPath %>/common/lectopic/ico/apple-touch-icon-72-precomposed.gif">
+<link rel="apple-touch-icon-precomposed" href="<%= currentPath %>/common/lectopic/ico/apple-touch-icon-57-precomposed.gif">
+<link rel="shortcut icon" href="<%= currentPath %>/common/lectopic/ico/favicon.gif">

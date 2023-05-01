@@ -2,38 +2,73 @@ package minuhy.xiaoxiang.lectopic.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import minuhy.xiaoxiang.lectopic.config.ConstantsConfig;
+import minuhy.xiaoxiang.lectopic.config.UriConfig;
+import minuhy.xiaoxiang.lectopic.config.enums.MessageState;
 
 public class BaseServlet extends HttpServlet {
 	private static final long serialVersionUID = -7684719899209422438L;
 
-	HttpServletRequest request;
-	HttpServletResponse response;
-	String currentPath;
-
+	protected HttpServletRequest request;
+	protected HttpServletResponse response;
 	/**
-	 * 消息状态
-	 * 
-	 * @author y17mm
-	 * @time 2023-4-29 23:39:24
-	 * @version 1.0
+	 * 当前会话对象
 	 */
-	public static enum MessageState {
-		SUCCESS, INFO,ERROR, FAIL,  None
-	}
+	protected HttpSession session;
+	protected ServletContext application;
+	/**
+	 * 当前应用路径
+	 */
+	protected String currentPath;
 
 	@Override
 	protected final void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		this.request = req;
 		this.response = resp;
-		this.currentPath = request.getContextPath();
+		this.currentPath = req.getContextPath();
+		this.session = req.getSession();
+		this.application = req.getServletContext();
 		super.service(req, resp);
+	}
+	
+	public final void forwardFailInfoPage(String info, String uri) throws ServletException, IOException {
+		forwardMessagePage(MessageState.FAIL, info, uri, true);
+	}
+
+	public final void forwardErrorInfoPage(String info, String uri) throws ServletException, IOException {
+		forwardMessagePage(MessageState.ERROR, info, uri, true);
+	}
+	
+	public final void forwardInfoPage(String info, String uri) throws ServletException, IOException {
+		forwardMessagePage(MessageState.INFO, info, uri, true);
+	}
+	
+	public final void forwardSuccessInfoPage(String info, String uri) throws ServletException, IOException {
+		forwardMessagePage(MessageState.SUCCESS, info, uri, true);
+	}
+
+	public final void forwardFailTipsPage(String info, String uri) throws ServletException, IOException {
+		forwardMessagePage(MessageState.FAIL, info, uri, true);
+	}
+
+	public final void forwardErrorTipsPage(String info, String uri) throws ServletException, IOException {
+		forwardMessagePage(MessageState.ERROR, info, uri, true);
+	}
+	
+	public final void forwardInfoTipsPage(String info, String uri) throws ServletException, IOException {
+		forwardMessagePage(MessageState.INFO, info, uri, true);
+	}
+	
+	public final void forwardSuccessTipsPage(String info, String uri) throws ServletException, IOException {
+		forwardMessagePage(MessageState.SUCCESS, info, uri, true);
 	}
 
 	/**
@@ -77,13 +112,15 @@ public class BaseServlet extends HttpServlet {
 	 */
 	private final void forwardMessagePage(MessageState sta, String info, String uri, boolean isAutoSkip)
 			throws ServletException, IOException {
-		uri = currentPath + uri;
+		if(!(uri.startsWith("http://") || uri.startsWith("https://"))) {
+			uri = currentPath + uri;
+		}
 		
 		request.setAttribute(ConstantsConfig.REQUEST_TIPS_STATE, sta);
 		request.setAttribute(ConstantsConfig.REQUEST_TIPS_INFO, info);
 		request.setAttribute(ConstantsConfig.REQUEST_TIPS_URI, uri);
 		request.setAttribute(ConstantsConfig.REQUEST_TIPS_SKIP, isAutoSkip);
-		request.getRequestDispatcher("/message.jsp").include(request, response);
+		request.getRequestDispatcher(UriConfig.MESSAGE).include(request, response);
 		if(isAutoSkip) {
 			response.setHeader("refresh", "3;url="+uri);
 		}

@@ -1,3 +1,4 @@
+<%@page import="minuhy.xiaoxiang.lectopic.config.ConstantsConfig"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%String currentPath = request.getContextPath();%>
@@ -5,7 +6,7 @@
 <html lang="zh-cmn-Hans-CN">
 
 <head>
-	<jsp:include page="jsp/head.jsp">
+	<jsp:include page="/jsp/head.jsp">
 		<jsp:param value="登录" name="pageTitle"/>
 	</jsp:include>
     <link href="<%= currentPath %>/common/lectopic/css/login.css" rel="stylesheet">
@@ -20,13 +21,64 @@
         <form action="<%= currentPath %>/user/login" class="form-signin" method="post">
             <!-- 账号输入框 -->
             <div>
-                <label>账号：</label>
-                <input type="text" class="input-block-level" name="username" placeholder="请输入账号" required>
+                <label>
+                    账号：
+                    <input 
+                        value="admin"
+                        type="text" 
+                        class="input-block-level" 
+                        name="username" 
+                        placeholder="请输入账号" 
+                        required="required" 
+                        oninvalid="setCustomValidity('请输入你的账号');" 
+                        oninput="setCustomValidity('');" 
+                        autofocus="autofocus">
+                </label>
             </div>
             <!-- 密码输入框 -->
             <div>
-                <label>密码：</label>
-                <input type="password" class="input-block-level" name="password" placeholder="请输入密码" required autocomplete="off">
+                <label>
+                    密码：
+                    <input 
+                    	value="123456"
+                        type="password" 
+                        class="input-block-level" 
+                        name="password" 
+                        placeholder="请输入密码" 
+                        required="required" 
+                        oninvalid="setCustomValidity('请输入账号的密码');" 
+                        oninput="setCustomValidity('');" 
+                        autocomplete="off">
+                </label>
+            </div>
+            <!-- 验证码输入框 -->
+            <div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="input-td">
+                                <label>
+                                    验证码：
+                                    <input 
+                                    	value="a"
+                                        type="text"  
+                                        name="captcha"
+                                        class="input-block-level"
+                                        placeholder="请输入验证码" 
+                                        required="required" 
+                                        oninvalid="setCustomValidity('请输入右边图片验证码的结果');" 
+                                        oninput="setCustomValidity('');">
+                                </label>
+                            </td>
+                            <td>
+                                <img 
+                                    id="captchaImg" 
+                                    alt="验证码" 
+                                    src="<%= currentPath %>/util/captcha">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="text-right">
                 <button class="btn btn-large btn-primary" type="submit">登录</button>
@@ -56,7 +108,9 @@
     </div>
 
 	<!-- 页脚 -->
-	<jsp:include page="jsp/foot.jsp"></jsp:include>
+	<jsp:include page="/jsp/foot.jsp"></jsp:include>
+	<!-- 本页JS -->
+	<script src="<%= currentPath %>/common/lectopic/js/login.js"></script>
 </body>
 
 </html>

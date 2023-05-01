@@ -21,53 +21,73 @@ import javax.servlet.http.HttpSession;
  * @version 1.0
  */
 public class HttpFilter implements Filter {
-	public void destroy() {
 
-	}
+	/**
+	 * 当前请求的URI
+	 */
+	protected String uri;
+	/**
+	 * 当前应用的路径
+	 */
+	protected String currentPath;
+	/**
+	 * 会话对象
+	 */
+	protected HttpSession session;
+	/**
+	 * 请求对象
+	 */
+	protected HttpServletRequest request;
+	/**
+	 * 响应对象
+	 */
+	protected HttpServletResponse response;
 
 	/**
 	 * 请求发来的时候对其进行操作
 	 * 
-	 * @param req HttpServletRequest
-	 * @param res HttpServletResponse
-	 * @return true：放行
+	 * @return true：放行（默认）
 	 * @throws UnsupportedEncodingException Other
 	 * @throws IOException
 	 * @throws ServletException
 	 */
-	protected boolean doHttpFilterFront(HttpServletRequest req, HttpServletResponse res)
-			throws UnsupportedEncodingException, ServletException, IOException {
+	protected boolean httpIncoming() throws UnsupportedEncodingException, ServletException, IOException {
 		return true;
 	}
 
 	/**
 	 * 返回响应的时候对其进行操作
-	 * 
-	 * @param req HttpServletRequest
-	 * @param res HttpServletResponse
 	 */
-	protected void doHttpFilterAfter(HttpServletRequest req, HttpServletResponse res) {
+	protected void httpOutgoing() throws UnsupportedEncodingException, ServletException, IOException {
 	}
 
 	@Override
-	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+	public final void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
 			throws IOException, ServletException {
 		if (servletRequest instanceof HttpServletRequest && servletResponse instanceof HttpServletResponse) {
 			// 如果是HTTP请求，开始处理业务
-			if (doHttpFilterFront((HttpServletRequest) servletRequest, (HttpServletResponse) servletResponse)) {
+
+			request = (HttpServletRequest) servletRequest;
+			response = (HttpServletResponse) servletResponse;
+			uri = request.getRequestURI();
+			currentPath = request.getContextPath();
+
+			if (httpIncoming()) {
 				filterChain.doFilter(servletRequest, servletResponse);
-				doHttpFilterAfter((HttpServletRequest) servletRequest, (HttpServletResponse) servletResponse);
 			}
+
+			httpOutgoing();
+
 		} else {
 			// 非HTTP请求，直接放行
+
 			filterChain.doFilter(servletRequest, servletResponse);
 		}
 	}
 
-	public void init(FilterConfig fConfig) throws ServletException {
+	public void destroy() {
 	}
-	
-	public HttpSession getSession(HttpServletRequest req) {
-		return req.getSession();
+
+	public void init(FilterConfig fConfig) throws ServletException {
 	}
 }
