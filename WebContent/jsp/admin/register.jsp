@@ -1,13 +1,12 @@
-<%@page import="minuhy.xiaoxiang.lectopic.config.ConstantsConfig"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%String currentPath = request.getContextPath();%>
-
+<%-- 设置管理员密码，不需要登录，只需要登录那边给session设置一个权限即可 --%>
+<%@ include file="/jsp/base.jsp" %>
 <%
 Object obj = session.getAttribute(ConstantsConfig.SESSION_ADMIN_REGISTER);
-if (!(obj instanceof Boolean) || !((Boolean) obj)) {
-	// 如果不是管理员注册的情况（存在且为true），跳转到登录页面
-	response.sendRedirect(currentPath + "/login.jsp");
+if (!(obj instanceof Boolean && ((Boolean) obj))) {
+	System.out.println(currentPath);
+	forwardInfoTipsPage("没有权限访问", UriConfig.LOGIN);
 	return;
 }
 %>

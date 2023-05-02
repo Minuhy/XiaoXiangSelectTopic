@@ -1,11 +1,9 @@
 <%@page import="minuhy.xiaoxiang.lectopic.config.enums.MessageState"%>
 <%@page import="minuhy.xiaoxiang.lectopic.util.TextUtil"%>
-<%@page import="minuhy.xiaoxiang.lectopic.servlet.BaseServlet"%>
+<%@page import="minuhy.xiaoxiang.lectopic.servlet.common.BaseServlet"%>
 <%@page import="minuhy.xiaoxiang.lectopic.config.ConstantsConfig"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%String currentPath = request.getContextPath();%>
-
 <%
 String title = "";
 String color = "";
@@ -70,6 +68,15 @@ switch(sta) {
         </div>
     </div> <!-- /container -->
 
+	<!-- 自动跳转 -->
+	<% if(isAutoSkip){ %>
+		<script type="text/javascript">
+			setTimeout(function() {  
+				location.href = "<%= uri %>";
+			}, 3000);
+		</script>
+	<% } %>
+	
 	<!-- 页脚 -->
 	<jsp:include page="/jsp/foot.jsp"></jsp:include>
 </body>

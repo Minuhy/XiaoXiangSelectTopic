@@ -4,12 +4,22 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/jsp/user.jsp" %>
 <%
+
 String nextUrl = currentPath + "/jsp/student/index.jsp";
 if(userBean.getRole() == RoleConfig.TEACHER){
 	nextUrl = currentPath + "/jsp/teacher/index.jsp";
 }else if(userBean.getRole() == RoleConfig.ADMIN){ 
 	nextUrl = currentPath + "/jsp/admin/index.jsp";
 }
+
+obj = session.getAttribute(ConstantsConfig.SESSION_INDEX_PAGE);
+if(obj instanceof Boolean && ((Boolean)obj)){
+	response.sendRedirect(nextUrl);
+	return;
+}else{
+	session.setAttribute(ConstantsConfig.SESSION_INDEX_PAGE,true);
+}
+
 %>
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans-CN">
@@ -22,7 +32,7 @@ if(userBean.getRole() == RoleConfig.TEACHER){
 
 <body>
     <div class="container">
-       <h1 class="margin-10p-up text-center">欢迎</h1>
+       <h1 class="margin-40up text-center">欢迎</h1>
         <hr>
         <div class="hero-unit text-center">
             <img alt="用户头像" src="<%= currentPath + userBean.getAvatarPath() %>" width="100" height="100" class="img-circle">
@@ -72,6 +82,13 @@ if(userBean.getRole() == RoleConfig.TEACHER){
             <p><a href="<%= nextUrl %>" class="btn btn-primary btn-large">继续</a></p>
 		</div>
     </div> <!-- /container -->
+    
+    <!-- 自动跳转 -->
+	<script type="text/javascript">
+		setTimeout(function() {  
+			location.href = "<%= nextUrl %>";
+		}, 10000);
+	</script>
 
 	<!-- 页脚 -->
 	<jsp:include page="/jsp/foot.jsp"></jsp:include>

@@ -17,7 +17,7 @@ import minuhy.xiaoxiang.lectopic.config.ConstantsConfig;
 import minuhy.xiaoxiang.lectopic.config.UriConfig;
 import minuhy.xiaoxiang.lectopic.database.UserDb;
 import minuhy.xiaoxiang.lectopic.entity.UserEntity;
-import minuhy.xiaoxiang.lectopic.servlet.BaseServlet;
+import minuhy.xiaoxiang.lectopic.servlet.common.BaseServlet;
 import minuhy.xiaoxiang.lectopic.util.EncryptionUtil;
 import minuhy.xiaoxiang.lectopic.util.RequestUtil;
 import minuhy.xiaoxiang.lectopic.util.TextUtil;
@@ -175,8 +175,11 @@ public class LoginServlet extends BaseServlet {
 					// 如果是管理员账号
 					if (password.equals(application.getAttribute(ConstantsConfig.APPLICATION_ADMIN_PWD))) {
 						log.info("管理员登录：" + username);
+						// 删除密码
 						application.removeAttribute(ConstantsConfig.APPLICATION_ADMIN_PWD);
+						// 设置session权限
 						session.setAttribute(ConstantsConfig.SESSION_ADMIN_REGISTER, true);
+						// 跳转
 						forwardInfoTipsPage("正在注册管理员", "/jsp/admin/register.jsp");
 						return;
 					} else {

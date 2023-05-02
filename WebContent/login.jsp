@@ -1,7 +1,29 @@
-<%@page import="minuhy.xiaoxiang.lectopic.config.ConstantsConfig"%>
+<%@page import="minuhy.xiaoxiang.lectopic.config.CommonConfig"%>
+<%@page import="minuhy.xiaoxiang.lectopic.util.TextUtil"%>
+<%@page import="minuhy.xiaoxiang.lectopic.bean.UserBean"%>
+<%@ page import="minuhy.xiaoxiang.lectopic.config.ConstantsConfig"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%String currentPath = request.getContextPath();%>
+<%@ include file="/jsp/base.jsp" %>
+<%
+// 判断是否登录，如果登录了，直接跳转到主页，不需要再次登录
+Object obj = session.getAttribute(ConstantsConfig.SESSION_USER_BEAN_NAME);
+if(obj instanceof UserBean && ((UserBean) obj).getId() > 0){
+	// 已经登录
+	
+	String prePage = TextUtil.getString(session.getAttribute(ConstantsConfig.SESSION_LOGIN_SOURCE), // 登录前访问的页面
+			currentPath + UriConfig.INDEX); // 没有则为默认值
+
+	session.removeAttribute(ConstantsConfig.SESSION_LOGIN_SOURCE);
+
+			
+	if(CommonConfig.isDebug()){
+		log.debug("已经登录：{}", prePage);
+	}
+	// 跳转到之前的页面
+	response.sendRedirect(prePage);
+}
+%>
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans-CN">
 

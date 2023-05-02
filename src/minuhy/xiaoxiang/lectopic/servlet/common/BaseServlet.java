@@ -1,4 +1,4 @@
-package minuhy.xiaoxiang.lectopic.servlet;
+package minuhy.xiaoxiang.lectopic.servlet.common;
 
 import java.io.IOException;
 
@@ -36,7 +36,23 @@ public class BaseServlet extends HttpServlet {
 		this.currentPath = req.getContextPath();
 		this.session = req.getSession();
 		this.application = req.getServletContext();
-		super.service(req, resp);
+		
+		if(beforeService(req,resp)) {
+			super.service(req, resp);
+		}
+	}
+	
+	/**
+	 * 开始处理请求前执行的操作，可以是校验权限等
+	 * @param request 请求
+	 * @param response 响应
+	 * @return 如果为 true（默认）则继续处理请求，否则直接退出
+	 * @throws ServletException Servlet 异常
+	 * @throws IOException IO 异常
+	 * @time 2023-5-1 18:31:17
+	 */
+	public boolean beforeService(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		return true;
 	}
 	
 	public final void forwardFailInfoPage(String info, String uri) throws ServletException, IOException {
@@ -122,7 +138,7 @@ public class BaseServlet extends HttpServlet {
 		request.setAttribute(ConstantsConfig.REQUEST_TIPS_SKIP, isAutoSkip);
 		request.getRequestDispatcher(UriConfig.MESSAGE).include(request, response);
 		if(isAutoSkip) {
-			response.setHeader("refresh", "3;url="+uri);
+			// response.setHeader("refresh", "3;url="+uri);
 		}
 	}
 

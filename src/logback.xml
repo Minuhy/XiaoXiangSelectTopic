@@ -148,7 +148,16 @@
     <!--
     <logger name="org.springframework" level="error" additivity="false"/>
     -->
+    
+    <!-- Java中的日志 -->
     <logger name="minuhy.xiaoxiang.lectopic" level="${log.level}" additivity="true">
+        <appender-ref ref="debugAppender"/>
+        <appender-ref ref="infoAppender"/>
+        <appender-ref ref="errorAppender"/>
+    </logger>
+    
+    <!-- JSP中的日志 -->
+    <logger name="org.apache.jsp" level="${log.level}" additivity="true">
         <appender-ref ref="debugAppender"/>
         <appender-ref ref="infoAppender"/>
         <appender-ref ref="errorAppender"/>

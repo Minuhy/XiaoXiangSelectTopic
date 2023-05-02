@@ -1,31 +1,40 @@
-.padding-bottom{
-    padding-bottom: 20px;
-}
-
-.margin-up-down{
-    margin: 20px 0;
-}
-
-.margin-up{
-    margin: 10px 0;
-}
-
-.margin-5p-up{
-    margin-top: 5%;
-}
-
-.margin-10p-up{
-    margin-top: 10%;
-}
+/* È«²¿µÄ */
+.p-2indent {  
+    text-indent: 2em;  
+  }
 
 .margin-10all{
     margin: 10px;
+}
+
+.margin-20all{
+    margin: 20px;
 }
 
 .margin-5all{
     margin: 5px;
 }
 
+.margin-5all{
+    margin: 5px;
+}
+
+.padding-5all{
+    padding: 5px;
+}
+
+.border0{
+    border: 0;
+}
+
+.w20-h20{
+    width: 20px;
+    height: 20px;
+}
+
+.inline-block{
+    display: inline-block;
+}
 
 .margin-2all{
     margin: 2px;
@@ -36,7 +45,64 @@
     margin-right: auto;
 }
 
-/* å¯¼èˆªæ  */
+.margin-0v-10h{
+    /*ÉÏÏÂ£¬×óÓÒ10*/
+    margin: 0 10px;
+}
+
+.line-height10{
+    line-height: 20px;
+}
+
+.margin-0v-5h{
+    /*ÉÏÏÂ£¬×óÓÒ5*/
+    margin: 0 5px;
+}
+
+.margin-20v-0h{
+    /*ÉÏÏÂ20£¬×óÓÒ0*/
+    margin: 20px 0;
+}
+
+/*²¿·ÖµÄ*/
+
+.padding-bottom{
+    padding-bottom: 20px;
+}
+
+.margin-10down{
+    margin-bottom: 10px;
+}
+
+.margin-20down{
+    margin-bottom: 20px;
+}
+
+.margin-10up{
+    margin-top: 10px;
+}
+
+.margin-20up{
+    margin-top: 20px;
+}
+
+.margin-30up{
+    margin-top: 30px;
+}
+
+.margin-40up{
+    margin-top: 40px;
+}
+
+.margin-5p-up{
+    margin-top: 5%;
+}
+
+.margin-10p-up{
+    margin-top: 10%;
+}
+
+/* µ¼º½À¸ */
 .nav1 li{
     display:inline;
     line-height: 40px;

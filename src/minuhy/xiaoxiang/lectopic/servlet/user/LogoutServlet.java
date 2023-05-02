@@ -3,39 +3,31 @@ package minuhy.xiaoxiang.lectopic.servlet.user;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import minuhy.xiaoxiang.lectopic.config.ConstantsConfig;
+import minuhy.xiaoxiang.lectopic.config.UriConfig;
+import minuhy.xiaoxiang.lectopic.servlet.common.BaseUserServlet;
 /**
- * Servlet implementation class LogoutServlet
+ * 退出登录
+ * 
+ * @author y17mm
+ * @time 2023-5-1 17:44:03
+ * @version 1.0
  */
-@WebServlet("/LogoutServlet")
-public class LogoutServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LogoutServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+@WebServlet("/user/logout")
+public class LogoutServlet extends BaseUserServlet {
+	private static final long serialVersionUID = 7971537569019139666L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		session.removeAttribute(ConstantsConfig.SESSION_USER_BEAN_NAME);
+		session.invalidate();
+		
+		forwardSuccessTipsPage("退出登录成功", UriConfig.LOGIN);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

@@ -17,7 +17,7 @@ import minuhy.xiaoxiang.lectopic.config.RoleConfig;
 import minuhy.xiaoxiang.lectopic.config.UriConfig;
 import minuhy.xiaoxiang.lectopic.database.UserDb;
 import minuhy.xiaoxiang.lectopic.entity.UserEntity;
-import minuhy.xiaoxiang.lectopic.servlet.BaseServlet;
+import minuhy.xiaoxiang.lectopic.servlet.common.BaseServlet;
 import minuhy.xiaoxiang.lectopic.util.EncryptionUtil;
 import minuhy.xiaoxiang.lectopic.util.RequestUtil;
 import minuhy.xiaoxiang.lectopic.util.TextUtil;
@@ -30,6 +30,13 @@ public class RegisterServlet extends BaseServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 0. 查权限
+		Object obj = session.getAttribute(ConstantsConfig.SESSION_ADMIN_REGISTER);
+		if (!(obj instanceof Boolean && ((Boolean) obj))) {
+			forwardInfoTipsPage("没有权限访问", UriConfig.LOGIN);
+			return;
+		}
+		
 		// 1. 拿到参数
 		String password = RequestUtil.getReqParam(request, "password", "");
 		String rePassword = RequestUtil.getReqParam(request, "repasswd", "");
@@ -83,7 +90,7 @@ public class RegisterServlet extends BaseServlet {
 					forwardSuccessTipsPage("管理员账号注册成功", UriConfig.LOGIN);
 					return;
 				} else {
-					forwardFailInfoPage("管理员账号注册失败", UriConfig.REGISTER);
+					forwardFailInfoPage("管理员账号注册失败（写入数据库出错）", UriConfig.REGISTER);
 					return;
 				}
 
