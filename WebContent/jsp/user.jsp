@@ -1,3 +1,4 @@
+<%@page import="minuhy.xiaoxiang.lectopic.config.RoleConfig"%>
 <%@ page import="minuhy.xiaoxiang.lectopic.config.enums.MessageState"%>
 <%@ page import="minuhy.xiaoxiang.lectopic.config.UriConfig"%>
 <%@ page import="minuhy.xiaoxiang.lectopic.config.ConstantsConfig"%>
@@ -8,6 +9,7 @@
 <%@ include file="/jsp/base.jsp" %>
 <%
 String currentPath = request.getContextPath();
+
 UserBean userBean = null;
 Object obj = session.getAttribute(ConstantsConfig.SESSION_USER_BEAN_NAME);
 if(obj instanceof UserBean && ((UserBean) obj).getId() > 0){
@@ -16,4 +18,12 @@ if(obj instanceof UserBean && ((UserBean) obj).getId() > 0){
 	forwardInfoTipsPage("请登录后再访问", UriConfig.LOGIN);
 	return;
 }
+
+String role = RoleConfig.STUDENT_S;
+if(userBean.getRole() == RoleConfig.TEACHER) {
+	role = RoleConfig.TEACHER_S;
+}else if(userBean.getRole() == RoleConfig.ADMIN) {
+	role = RoleConfig.ADMIN_S;
+}
+
 %>

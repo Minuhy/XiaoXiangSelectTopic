@@ -106,7 +106,8 @@ if(obj instanceof UserBean && ((UserBean) obj).getId() > 0){
         </div>
 
     </div>
-
+    
+    
 	<div class="padding-30all">
 		<hr>
 	</div>

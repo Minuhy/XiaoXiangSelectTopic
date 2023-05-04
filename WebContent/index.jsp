@@ -54,29 +54,21 @@ if(obj instanceof Boolean && ((Boolean)obj)){
                             <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                             <div class="layui-timeline-content layui-text">
                                 <h3 class="layui-timeline-title">基本信息</h3>
-                                <% 
-					            if(userBean.getRole() == RoleConfig.STUDENT){ 
-					            %>
+                                <% if(userBean.getRole() == RoleConfig.STUDENT){ %>
 						            <div>学号：</div>
 						            <div>姓名：</div>
 						            <div>班级：</div>
 						            <div>年级：</div>
 						            <div>专业：</div>
 						            <div>院系：</div>
-					            <%
-					            }else if(userBean.getRole() == RoleConfig.TEACHER){ 
-					            %>
+					            <% }else if(userBean.getRole() == RoleConfig.TEACHER){ %>
 						            <p>姓名：</p>
 						            <p>职称：</p>
 						            <p>教研室：</p>
 						            <p>院系：</p>
-					            <%
-					            }else if(userBean.getRole() == RoleConfig.ADMIN){ 
-					            %>
+					            <% }else if(userBean.getRole() == RoleConfig.ADMIN){ %>
 					            	<p>管理员</p>
-					            <%
-					            } 
-					            %>
+					            <% } %>
                             </div>
                         </li>
                         <li class="layui-timeline-item">
@@ -98,6 +90,10 @@ if(obj instanceof Boolean && ((Boolean)obj)){
             <a href="<%= nextUrl %>" class="layui-btn">继续</a>
             <p class="margin-10all color-gray">十秒后自动继续</p>
         </div>
+    </div>
+    
+    <div class="layui-hide-xs"  style="margin: 15px 0 100px; padding-bottom: 100px;">
+		<!-- 留白 -->
     </div>
     
 	<div class="padding-30all">

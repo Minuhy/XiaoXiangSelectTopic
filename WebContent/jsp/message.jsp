@@ -93,6 +93,7 @@ switch(sta) {
 		</script>
 	<% } %>
 	
+    
 	<div class="padding-30all">
 		<hr>
 	</div>

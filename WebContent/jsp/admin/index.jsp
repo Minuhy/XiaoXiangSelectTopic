@@ -16,7 +16,8 @@
 	<div class="layui-layout layui-layout-admin">
 		<%-- 导航栏 --%>
 		<jsp:include page="/jsp/navigation.jsp">
-			<jsp:param value="admin" name="role"/>
+			<jsp:param value="<%= role %>" name="role"/>
+			<jsp:param value="<%= role %>" name="panel"/>
 		</jsp:include>
 		
 		<jsp:useBean id="adminIndex" scope="application" class="minuhy.xiaoxiang.lectopic.bean.admin.AdminIndexBean"></jsp:useBean>
@@ -99,7 +100,11 @@
                         </div>
                     </div>
                 </div>
-	
+	    
+			    <div class="layui-hide-xs"  style="margin: 15px 0 100px; padding-bottom: 100px;">
+					<!-- 留白 -->
+			    </div>
+    
 	            <!-- **************************************************************************************************** -->
 	            <!-- 主内容 内容 结束 -->
 	        </div>

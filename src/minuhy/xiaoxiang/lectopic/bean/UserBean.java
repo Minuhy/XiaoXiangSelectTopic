@@ -1,6 +1,7 @@
 package minuhy.xiaoxiang.lectopic.bean;
 
 import minuhy.xiaoxiang.lectopic.entity.UserEntity;
+import minuhy.xiaoxiang.lectopic.util.TextUtil;
 import minuhy.xiaoxiang.lectopic.util.TimeUtil;
 
 public class UserBean {
@@ -25,23 +26,71 @@ public class UserBean {
 		return userEntity.getAccount();
 	}
 	
+	/**
+	 * 获取性别（字符）
+	 * @return 性别
+	 * @time 2023-5-5 0:52:40
+	 */
+	public String getSexStr() {
+		int sex = userEntity.getSex();
+		
+		if(sex == 1) {
+			return "男";
+		}else if(sex == 2) {
+			return "女";
+		}
+		
+		return "未设置";
+	}
+	
+	/**
+	 * 获取电子邮件地址
+	 * @return 电子邮件地址
+	 * @time 2023-5-5 0:55:22
+	 */
+	public String getEmail() {
+		return TextUtil.getString(userEntity.getEmail(), "未设置");
+	}
+	
+	/**
+	 * 获取手机号
+	 * @return 手机号
+	 * @time 2023-5-5 0:56:34
+	 */
+	public String getPhone() {
+		return TextUtil.getString(userEntity.getPhone(), "未设置");
+	}
+	
+	/**
+	 * 获取签名信息
+	 * @return 签名
+	 * @time 2023-5-5 0:57:31
+	 */
+	public String getSignature() {
+		return TextUtil.getString(userEntity.getSignature(), "未设置");
+	}
+	
+	
 
 	/**
 	 * 获取最后一次登录时间 yyyy-MM-dd HH:mm
-	 * @return yyyy-MM-dd HH:mm
+	 * @return yyyy-MM-dd HH:mm 或者 无
 	 * @time 2023-4-30 19:23:38
 	 */
 	public String getLastLoginTime() {
+		if(userEntity.getLastLoginTimestamp() == 0) {
+			return "无";
+		}
 		return TimeUtil.timestamp2DateTime(userEntity.getLastLoginTimestamp());
 	}
 	
 	/**
 	 * 获取最后登录IP
-	 * @return IP
+	 * @return IP 或者 无
 	 * @time 2023-4-30 19:24:01
 	 */
 	public String getLastLoginIp() {
-		return userEntity.getLastLoginIp();
+		return TextUtil.getString(userEntity.getLastLoginIp(), "无");
 	}
 	
 	/**
@@ -51,7 +100,7 @@ public class UserBean {
 	 * @time 2023-4-30 19:27:47
 	 */
 	public String getAvatar() {
-		return userEntity.getAvatar();
+		return TextUtil.getString(userEntity.getAvatar(), "h000.gif");
 	}
 	
 	/**
@@ -60,7 +109,7 @@ public class UserBean {
 	 * @time 2023-4-30 19:28:51
 	 */
 	public String getAvatarPath() {
-		if(userEntity.getAvatar().startsWith("h") && userEntity.getAvatar().endsWith(".gif")) {
+		if(getAvatar().startsWith("h") && userEntity.getAvatar().endsWith(".gif")) {
 			return "/common/lectopic/img/"+ userEntity.getAvatar();
 		}else {
 			return userEntity.getAvatar();

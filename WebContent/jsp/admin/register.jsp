@@ -65,7 +65,10 @@ if (!(obj instanceof Boolean && ((Boolean) obj))) {
             </div>
         </form>
     </div>
-
+        
+	<div class="padding-30all">
+		<hr>
+	</div>
 
 	<!-- 页脚 -->
 	<jsp:include page="/jsp/foot.jsp"></jsp:include>

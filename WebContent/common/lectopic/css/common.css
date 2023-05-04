@@ -23,7 +23,9 @@ body{
 .margin-5all{
     margin: 5px;
 }
-
+.font-w{
+    font-weight: bold;
+}
 .font-24p{
     font-size: 24px;
 }
@@ -43,6 +45,14 @@ body{
     font-size: 16px;
 }
 
+.font-14p{
+    font-size: 14px;
+}
+
+.font-12p{
+    font-size: 12px;
+}
+
 .font-20p{
     font-size: 20px;
 }
@@ -60,6 +70,12 @@ body{
 }
 .padding-30all{
     padding: 30px;
+}
+
+
+.padding-0v-15h{
+    /*上下，左右15*/
+    padding: 0 15px;
 }
 
 .border0{
@@ -101,6 +117,12 @@ body{
 .margin-20v-0h{
     /*上下20，左右0*/
     margin: 20px 0;
+}
+
+
+.margin-20v-10h{
+    /*上下20，左右10*/
+    margin: 20px 10px;
 }
 
 .text-c{

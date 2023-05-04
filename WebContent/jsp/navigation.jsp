@@ -1,8 +1,47 @@
+<%@page import="minuhy.xiaoxiang.lectopic.config.RoleConfig"%>
+<%@page import="minuhy.xiaoxiang.lectopic.config.CommonConfig"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% String currentPath = request.getContextPath(); %>
+<%@ include file="/jsp/base.jsp" %>
 <%
+// student teacher admin 
+// RoleConfig.STUDENT_S RoleConfig.TEACHER_S RoleConfig.ADMIN_S
 String role = request.getParameter("role");
+
+// my other
+String panel = request.getParameter("panel");
+
+if(!"my".equals(panel)){
+	panel = "other";
+}
+
+String curPage = request.getParameter("curPage");
+
+int maxPage,minPage;
+if(curPage != null){
+	if(curPage.contains(".")){
+		String[] curPages = curPage.split(".");
+		try{
+			maxPage = Integer.parseInt(curPages[0]);
+			minPage = Integer.parseInt(curPages[1]);
+		}catch (NumberFormatException e){
+			log.error("获取导航栏位置时出错：{}", e);
+		}
+	}else{
+		try{
+			maxPage = Integer.parseInt(curPage);
+			minPage = 0;
+		}catch (NumberFormatException e){
+			log.error("获取导航栏位置时出错：{}", e);
+		}
+	}
+}else{
+	maxPage = minPage = 0;
+	if(CommonConfig.isDebug()){
+		log.debug("导航栏位置为空");
+	}
+}
+
 %>
 
 <!-- 上方导航栏 开始 -->
@@ -15,10 +54,24 @@ String role = request.getParameter("role");
         </a>
         <!-- 上方导航菜单栏 -->
         <ul class="layui-nav" id="LAY_NAV_TOP">
-            <li class="layui-nav-item" data-dir="docs">
-                <a href="/v2/docs/">我的</a>
-            </li>
-            <li id="logoutLi" class="layui-nav-item" data-dir="demo">
+			<% if("my".equals(panel)) { %>
+				<% if(RoleConfig.STUDENT_S.equals(role)){ %>
+	            	<!-- 学生 开始 -->
+	            	<!-- 学生 结束 -->
+	            <% }else if(RoleConfig.TEACHER_S.equals(role)){ %>
+	            	<!-- 老师 开始 -->
+	            	<!-- 老师 结束 -->
+	            <% }else if(RoleConfig.ADMIN_S.equals(role)){ %>
+		            <li class="layui-nav-item">
+		                <a href="<%= currentPath %>/jsp/admin/index.jsp">管理</a>
+		            </li>
+	            <% } %>
+        	<% } else if("other".equals(panel)) { %>
+	            <li class="layui-nav-item">
+	                <a href="<%= currentPath %>/jsp/common/my.jsp">我的</a>
+	            </li>
+            <% } %>
+            <li id="logoutLi" class="layui-nav-item">
                 <a id="logoutBtn" data-method="logout" href="javascript:;">退出</a>
             </li>
         </ul>
@@ -32,75 +85,93 @@ String role = request.getParameter("role");
 <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
         <ul class="layui-nav layui-nav-tree site-demo-nav">
-            <% if("student".equals(role)){ %>
-            	<!-- 学生 开始 -->
-            	<!-- 学生 结束 -->
-            <% }else if("teacher".equals(role)){ %>
-            	<!-- 老师 开始 -->
-            	<!-- 老师 结束 -->
-            <% }else if("admin".equals(role)){ %>
-            	<!-- 管理员 开始 -->
-				<li class="layui-nav-item layui-nav-itemed layui-this">
-	                <a href="javascript:;">首页</a>
-	            </li>
-	
-	            <li class="layui-nav-item">
-	                <a href="javascript:;">学生</a>
-	                <dl class="layui-nav-child">
-	                    <dd>
-	                        <a href="/v2/demo/grid.html">学生管理</a>
-	                    </dd>
-	                    <dd>
-	                        <a href="/v2/demo/admin.html">学生导入</a>
-	                    </dd>
-	                </dl>
-	            </li>
-	
-	            <li class="layui-nav-item">
-	                <a href="javascript:;">教师</a>
-	                <dl class="layui-nav-child">
-	                    <dd>
-	                        <a href="/v2/demo/grid.html">教师管理</a>
-	                    </dd>
-	                    <dd>
-	                        <a href="/v2/demo/admin.html">教师导入</a>
-	                    </dd>
-	                </dl>
-	            </li>
-	            
-	            <li class="layui-nav-item">
-	                <a href="javascript:;">选题</a>
-	                <dl class="layui-nav-child">
-	                    <dd>
-	                        <a href="/v2/demo/grid.html">选题管理</a>
-	                    </dd>
-	                    <dd>
-	                        <a href="/v2/demo/grid.html">选题情况</a>
-	                    </dd>
-	                    <dd>
-	                        <a href="/v2/demo/admin.html">选题导入</a>
-	                    </dd>
-	                </dl>
-	            </li>
-	            
-	            <li class="layui-nav-item">
-	                <a href="javascript:;">进度</a>
-	                <dl class="layui-nav-child">
-	                    <dd>
-	                        <a href="/v2/demo/grid.html">进度管理</a>
-	                    </dd>
-	                </dl>
-	            </li>
-	
-	            <li class="layui-nav-item">
-	                <a href="javascript:;">组织结构</a>
-	                <dl class="layui-nav-child">
-	                    <dd>
-	                        <a href="/v2/demo/grid.html">组织结构管理</a>
-	                    </dd>
-	                </dl>
-	            </li>
-	            <!-- 管理员 结束 -->
+            <% if("my".equals(panel)) { %>
+				<li class="layui-nav-item layui-this">
+                    <a href="<%= currentPath %>/jsp/common/my.jsp">我的资料</a>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">我的消息<span class="layui-badge">666469+</span></a>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">修改资料</a>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">修改密码</a>
+                </li>
+        	<% } else if("other".equals(panel)) { %>
+        		<!-- 其他界面 开始 -->
+	            <% if(RoleConfig.STUDENT_S.equals(role)){ %>
+	            	<!-- 学生 开始 -->
+	            	<!-- 学生 结束 -->
+	            <% }else if(RoleConfig.TEACHER_S.equals(role)){ %>
+	            	<!-- 老师 开始 -->
+	            	<!-- 老师 结束 -->
+	            <% }else if(RoleConfig.ADMIN_S.equals(role)){ %>
+	            	<!-- 管理员 开始 -->
+					<li class="layui-nav-item layui-this">
+		                <a href="<%= currentPath %>/jsp/admin/index.jsp">首页</a>
+		            </li>
+		
+		            <li class="layui-nav-item layui-nav-itemed">
+		                <a href="javascript:;">管理</a>
+		                <dl class="layui-nav-child">
+		                    <dd>
+		                        <a href="/v2/demo/grid.html">学生管理</a>
+		                    </dd>
+		                    <dd>
+		                        <a href="/v2/demo/admin.html">教师管理</a>
+		                    </dd>
+		                    <dd>
+		                        <a href="/v2/demo/admin.html">课题管理</a>
+		                    </dd>
+		                    <dd>
+		                        <a href="/v2/demo/admin.html">选题管理</a>
+		                    </dd>
+		                    <dd>
+		                        <a href="/v2/demo/admin.html">组织架构管理</a>
+		                    </dd>
+		                </dl>
+		            </li>
+		
+		            <li class="layui-nav-item">
+		                <a href="javascript:;">导入</a>
+		                <dl class="layui-nav-child">
+		                    <dd>
+		                        <a href="/v2/demo/grid.html">学生资料导入</a>
+		                    </dd>
+		                    <dd>
+		                        <a href="/v2/demo/admin.html">教师资料导入</a>
+		                    </dd>
+		                    <dd>
+		                        <a href="/v2/demo/admin.html">课题资料导入</a>
+		                    </dd>
+		                </dl>
+		            </li>
+		            
+		            <li class="layui-nav-item">
+		                <a href="javascript:;">工具</a>
+		                <dl class="layui-nav-child">
+		                    <dd>
+		                        <a href="/v2/demo/grid.html">重置账号密码</a>
+		                    </dd>
+		                    <dd>
+		                        <a href="/v2/demo/grid.html">快速选题</a>
+		                    </dd>
+		                    <dd>
+		                        <a href="/v2/demo/admin.html">高级工具</a>
+		                    </dd>
+		                </dl>
+		            </li>
+		            
+		            <li class="layui-nav-item">
+		                <a href="javascript:;">系统设置</a>
+		            </li>
+		            <!-- 管理员 结束 -->
+	            <% } %>
+	            <!-- 其他界面 结束 -->
             <% } %>
             <li class="layui-nav-item" style="height: 30px; text-align: center"></li>
         </ul>

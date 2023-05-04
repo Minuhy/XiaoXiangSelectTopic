@@ -36,10 +36,10 @@
                 </a>
                 <!-- 上方导航菜单栏 -->
                 <ul class="layui-nav" id="LAY_NAV_TOP">
-                    <li class="layui-nav-item" data-dir="docs">
-                        <a href="/v2/docs/">我的</a>
+                    <li class="layui-nav-item">
+                        <a href="/v2/docs/"><span class="padding-0v-15h">管理</span><span class="layui-badge">99</span></a>
                     </li>
-                    <li id="logoutLi" class="layui-nav-item" data-dir="demo">
+                    <li id="logoutLi" class="layui-nav-item">
                         <a id="logoutBtn" data-method="logout" href="javascript:;">退出</a>
                     </li>
                 </ul>
@@ -53,66 +53,23 @@
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
                 <ul class="layui-nav layui-nav-tree site-demo-nav">
-                    <li class="layui-nav-item layui-nav-itemed layui-this">
-                        <a href="javascript:;">首页</a>
+                    <li class="layui-nav-item layui-this">
+                        <a href="javascript:;">我的资料</a>
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;">学生</a>
-                        <dl class="layui-nav-child">
-                            <dd>
-                                <a href="/v2/demo/grid.html">学生管理</a>
-                            </dd>
-                            <dd>
-                                <a href="/v2/demo/admin.html">学生导入</a>
-                            </dd>
-                        </dl>
+                        <a href="javascript:;">我的消息<span class="layui-badge">666469+</span></a>
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;">教师</a>
-                        <dl class="layui-nav-child">
-                            <dd>
-                                <a href="/v2/demo/grid.html">教师管理</a>
-                            </dd>
-                            <dd>
-                                <a href="/v2/demo/admin.html">教师导入</a>
-                            </dd>
-                        </dl>
+                        <a href="javascript:;">修改资料</a>
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;">选题</a>
-                        <dl class="layui-nav-child">
-                            <dd>
-                                <a href="/v2/demo/grid.html">选题管理</a>
-                            </dd>
-                            <dd>
-                                <a href="/v2/demo/grid.html">选题情况</a>
-                            </dd>
-                            <dd>
-                                <a href="/v2/demo/admin.html">选题导入</a>
-                            </dd>
-                        </dl>
+                        <a href="javascript:;">修改密码</a>
                     </li>
 
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">进度</a>
-                        <dl class="layui-nav-child">
-                            <dd>
-                                <a href="/v2/demo/grid.html">进度管理</a>
-                            </dd>
-                        </dl>
-                    </li>
-
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">组织结构</a>
-                        <dl class="layui-nav-child">
-                            <dd>
-                                <a href="/v2/demo/grid.html">组织结构管理</a>
-                            </dd>
-                        </dl>
-                    </li>
+                   
 
                     <li class="layui-nav-item" style="height: 30px; text-align: center"></li>
                 </ul>
@@ -127,65 +84,198 @@
                 <!-- **************************************************************************************************** -->
                 <div class="layui-row">
                     <div class="layui-col-md12">
-                        <div class="layui-panel padding-30all">
-                            <h1 class="font-30p">管理首页</h1>
-                            <div class="margin-10all">
-                                <p class="p-2indent">欢迎您，系统管理员，你可以对系统中的所有数据进行修改。本页面展示一些系统统计信息。</p>
-                                <p class="p-2indent">
-                                    作为学生毕设系统管理员，需要与指导教师和学生进行沟通，解决毕设过程中出现的问题。还需要保证毕设资料的完整性和安全性，防止数据泄露或丢失。最后，还需要积极推动毕设工作的顺利进行，保证毕设工作的质量和进度，定期向指导教师和学生汇报毕设进展情况。
-                                </p>
-                                <p class="p-2indent">
-                                    作为系统管理员，需要具备良好的文字表达能力、沟通能力、组织协调能力和团队合作精神，同时还需要具备较强的责任心、耐心和细心，以确保毕设工作的顺利进行。感谢您的支持和理解，遇到任何问题，请点击下方按钮联系我们。
-                                </p>
+                        <div class="layui-panel padding-30all text-c">
+                            <img alt="<%= userBean.getNick() %>的头像" src="<%= currentPath + userBean.getAvatarPath() %>" width="120" height="120" class="img-circle img-thumbnail">
+                            <div class="padding-20all">
+                                <h2 class="font-30p text-over">
+                                    用户昵称
+                                </h2>
+                                <h6 class="font-w">管理员</h6>
                             </div>
-                            <p class="text-r margin-20all">
-                                <a id="linkWe" class="layui-btn">联系我们</a>
-                            </p>
+                            <p>上一次登录网络节点地址：255.255.255.255</p>
+                            <p>上一次登录时间：2023-05-04 14:25</p>
                         </div>
                     </div>
                 </div>
                 <div class="layui-row">
-                    <div class="layui-col-md12 padding-30all">
-                        <h1 class="font-30p margin-20down margin-10all">概览</h1>
-                        <div class="layui-col-md3">
-                            <div class="layui-panel margin-10all">
-                                <div class="padding-30all text-c">
-                                    <h2 class="font-40p">8</h2>
-                                    <p class="font-16p">系统中学生总人数</p>
-                                    <a class="layui-btn  layui-btn-primary" href="#">管理学生</a>
-                                </div>
-                            </div>
+                    <div class="layui-col-md12">
+                        <h1 class="font-30p margin-20v-10h ">基本资料</h1>
+                    </div>
+                </div>
+                <div class="layui-panel padding-20all">
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 layui-col-xs text-c">
+                            <p class="font-20p">昵称</p>
                         </div>
-                        <div class="layui-col-md3">
-                            <div class="layui-panel margin-10all">
-                                <div class="padding-30all text-c">
-                                    <h2 class="font-40p">8</h2>
-                                    <p class="font-16p">系统中教师总人数</p>
-                                    <a class="layui-btn  layui-btn-primary" href="#">管理教师数据</a>
-                                </div>
-                            </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">小鱼</p>
                         </div>
-                        <div class="layui-col-md3">
-                            <div class="layui-panel margin-10all">
-                                <div class="padding-30all text-c">
-                                    <h2 class="font-40p">8</h2>
-                                    <p class="font-16p">系统中选题总数量</p>
-                                    <a class="layui-btn  layui-btn-primary" href="#">管理选题数据</a>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">性别</p>
                         </div>
-                        <div class="layui-col-md3">
-                            <div class="layui-panel margin-10all">
-                                <div class="padding-30all text-c">
-                                    <h2 class="font-40p">8</h2>
-                                    <p class="font-16p">系统中已选总数</p>
-                                    <a class="layui-btn  layui-btn-primary" href="#">管理选题情况</a>
-                                </div>
-                            </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">男</p>
+                        </div>
+                    </div>
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">邮箱</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">
+                                35543146564@qq.com
+                                <span class="color-gray font-14p">（仅自己和老师可见）</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">手机</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">
+                                13243606177
+                                <span class="color-gray font-14p">（仅自己和老师可见）</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">签名</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">ui 之所以赢得如此多人的青睐，更多是在于它“前后界面兼备”的能力。既可编织出绚丽的前台页面，又可满足繁杂的管理系统的界面需求。
+                                layui 管理基本布局， 致力于让每一位开发者都能轻松搭建自己的管理系统模板。</p>
                         </div>
                     </div>
                 </div>
 
+                <div class="layui-row">
+                    <div class="layui-col-md12">
+                        <h1 class="font-30p margin-20v-10h">学生资料<span class="color-gray font-14p">（仅自己和老师可见）</span></h1>
+                    </div>
+                </div>
+                <div class="layui-panel padding-20all">
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">学号</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">175646413154566</p>
+                        </div>
+                    </div>
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">姓名</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">玉米子</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">院系</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">信息学院</p>
+                        </div>
+                    </div>
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">专业</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">计算机应用</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">年级</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">2017级</p>
+                        </div>
+                    </div>
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">班级</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">1班</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+                
+                <div class="layui-row">
+                    <div class="layui-col-md12">
+                        <h1 class="font-30p margin-20v-10h">教师资料</h1>
+                    </div>
+                </div>
+                <div class="layui-panel padding-20all">
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">工号</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">11245</p>
+                        </div>
+                    </div>
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">姓名</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">玉米子</p>
+                        </div>
+                    </div>
+                    
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">职称</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">讲师</p>
+                        </div>
+                    </div>
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">院系</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">信息学院</p>
+                        </div>
+                    </div>
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">教研室</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">计双击压缩等级卡萨丁就应教研室</p>
+                        </div>
+                    </div>
+                    <div class="layui-row margin-10all">
+                        <div class="layui-col-md3 layui-col-xs4 text-c">
+                            <p class="font-20p">个人简介</p>
+                        </div>
+                        <div class="layui-col-md9 layui-col-xs8">
+                            <p class="font-20p">ui 之所以赢得如此多人的青睐，更多是在于它“前后界面兼备”的能力。既可编织出绚丽的前台页面，又可满足繁杂的管理系统的界面需求。
+                                layui 管理基本布局， 致力于让每一位开发者都能轻松搭建自己的管理系统模板。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-hide-xs" style="margin: 15px 0 100px; padding-bottom: 100px;">
+
+                </div>
 
                 <!-- **************************************************************************************************** -->
                 <!-- 主内容 内容 结束 -->

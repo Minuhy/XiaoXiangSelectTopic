@@ -60,40 +60,6 @@ layui.define(["code", "element", "table", "util", "carousel", "laytpl"], functio
         devHost: "127.0.0.1"
     }), h = (a("#LAY_home"),
     layui.data("layui")), v = m.getBrowser(), f = (l.ready(function() {
-        if (h.version) {
-            var i, e = h.version.split(".").reverse(), o = layui.v.split(".").reverse();
-            if (layui.each(e, function(e, t) {
-                parseInt(o[e]) > parseInt(t) ? i = !0 : parseInt(o[e]) < parseInt(t) && (i = !1)
-            }),
-            !i)
-                return;
-            l.open({
-                type: 1,
-                title: "\u66f4\u65b0\u63d0\u793a",
-                closeBtn: !1,
-                area: "300px;",
-                shade: !1,
-                offset: "8px",
-                id: "LAY_updateNotice",
-                btn: ["\u66f4\u65b0\u65e5\u5fd7", "\u6211\u77e5\u9053\u4e86"],
-                btnAlign: "c",
-                moveType: 1,
-                content: ['<div class="layui-text">', 'Layui \u5df2\u53d1\u5e03\u65b0\u7248\u672c\uff1a\uff1a<strong style="padding-right: 10px; color: #fff;">v' + layui.v + "</strong>", "</div>"].join(""),
-                skin: "layui-layer-notice",
-                yes: function(e) {
-                    l.close(e),
-                    setTimeout(function() {
-                        location.href = ("v2" === p.pathname[0] || "layui.github.io" === location.hostname ? "/v2" : "") + "/docs/base/changelog.html"
-                    }, 500)
-                },
-                end: function() {
-                    layui.data("layui", {
-                        key: "version",
-                        value: layui.v
-                    })
-                }
-            })
-        }
         layui.data("layui", {
             key: "version",
             value: layui.v
