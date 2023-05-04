@@ -1,7 +1,12 @@
-/* ȫ���� */
+/* 全部的 */
+
+body{
+    background-color: #f5f5f5;
+}
+
 .p-2indent {  
     text-indent: 2em;  
-  }
+}
 
 .margin-10all{
     margin: 10px;
@@ -19,8 +24,42 @@
     margin: 5px;
 }
 
+.font-24p{
+    font-size: 24px;
+}
+
+.font-30p{
+    font-size: 30px;
+}
+.font-36p{
+    font-size: 36px;
+}
+
+.font-40p{
+    font-size: 40px;
+}
+
+.font-16p{
+    font-size: 16px;
+}
+
+.font-20p{
+    font-size: 20px;
+}
+
 .padding-5all{
     padding: 5px;
+}
+
+.padding-10all{
+    padding: 10px;
+}
+
+.padding-20all{
+    padding: 20px;
+}
+.padding-30all{
+    padding: 30px;
 }
 
 .border0{
@@ -46,7 +85,7 @@
 }
 
 .margin-0v-10h{
-    /*���£�����10*/
+    /*上下，左右10*/
     margin: 0 10px;
 }
 
@@ -55,16 +94,59 @@
 }
 
 .margin-0v-5h{
-    /*���£�����5*/
+    /*上下，左右5*/
     margin: 0 5px;
 }
 
 .margin-20v-0h{
-    /*����20������0*/
+    /*上下20，左右0*/
     margin: 20px 0;
 }
 
-/*���ֵ�*/
+.text-c{
+    text-align: center;
+}
+
+.text-r{
+    text-align: right;
+}
+
+.text-l{
+    text-align: left;
+}
+
+.img-thumbnail {
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+
+.img-circle{
+    border-radius: 50%;
+}
+
+.text-over {
+    /*（文本溢出限定的宽度就隐藏内容）*/
+    overflow: hidden;
+    /*（和 -webkit-line-clamp: 2；结合使用，将对象作为弹性伸缩盒子模型显示 ）*/
+    display: -webkit-box;
+    /*（用来限制在一个块元素显示的文本的行数, 2 表示最多显示 2 行。 为了实现该效果，它需要组合其他的WebKit属性）*/
+    -webkit-line-clamp: 2;
+    /*（和 -webkit-line-clamp: 2；结合使用 ，设置或检索伸缩盒对象的子元素的排列方式 ）*/
+    -webkit-box-orient: vertical;
+    /*（多行文本的情况下，用省略号“…”隐藏溢出范围的文本)*/
+    text-overflow: ellipsis;
+  }
+
+/*部分的*/
 
 .padding-bottom{
     padding-bottom: 20px;
@@ -76,6 +158,14 @@
 
 .margin-20down{
     margin-bottom: 20px;
+}
+
+.margin-30down{
+    margin-bottom: 30px;
+}
+
+.margin-40down{
+    margin-bottom: 40px;
 }
 
 .margin-10up{
@@ -94,6 +184,14 @@
     margin-top: 40px;
 }
 
+.margin-50up{
+    margin-top: 50px;
+}
+
+.margin-60up{
+    margin-top: 60px;
+}
+
 .margin-5p-up{
     margin-top: 5%;
 }
@@ -102,7 +200,23 @@
     margin-top: 10%;
 }
 
-/* ������ */
+.color-red{
+    color: red;
+}
+
+.color-gray{
+    color: gray;
+}
+
+.color-yellow{
+    color: yellow;
+}
+
+.color-purple{
+    color: purple;
+}
+
+/* 导航栏 */
 .nav1 li{
     display:inline;
     line-height: 40px;

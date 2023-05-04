@@ -31,57 +31,78 @@ if(obj instanceof Boolean && ((Boolean)obj)){
 </head>
 
 <body>
-    <div class="container">
-       <h1 class="margin-40up text-center">欢迎</h1>
-        <hr>
-        <div class="hero-unit text-center">
-            <img alt="用户头像" src="<%= currentPath + userBean.getAvatarPath() %>" width="100" height="100" class="img-circle">
-            <h2><%= userBean.getNick() %></h2>
-            <% 
-            if(userBean.getRole() == RoleConfig.STUDENT){ 
-            %>
-	            <br>
-	            <div>学号：</div>
-	            <div>姓名：</div>
-	            <div>班级：</div>
-	            <div>年级：</div>
-	            <div>专业：</div>
-	            <div>院系：</div>
-            <%
-            }else if(userBean.getRole() == RoleConfig.TEACHER){ 
-            %>
-	            <br>
-	            <p>姓名：</p>
-	            <p>职称：</p>
-	            <p>教研室：</p>
-	            <p>院系：</p>
-            <%
-            }else if(userBean.getRole() == RoleConfig.ADMIN){ 
-            %>
-            	<p>管理员</p>
-            <%
-            } 
-            %>
-            <br>
-            <div class="hidden-phone">账号：<%= userBean.getAccount() %></div>
-            <div class="visible-phone">
-	            <div>账号</div>
-	            <div><%= userBean.getAccount() %></div>
+
+    <div class="layui-container">
+        <div class="layui-row text-c margin-20all">
+            <h1 class="font-40p">欢迎</h1>
+        </div>
+        <div class="layui-row padding-5all">
+            <div class="layui-col-md3">
+                <div class="layui-panel margin-10all padding-20all text-c">
+                    <img alt="<%= userBean.getNick() %>的头像" src="<%= currentPath + userBean.getAvatarPath() %>" width="120" height="120" class="img-circle img-thumbnail">
+                    <div class="padding-20all">
+                        <h2 class="font-30p text-over">
+                        	<%= userBean.getNick() %>
+                        </h2>
+                    </div>
+                </div>
             </div>
-            <div class="hidden-phone">上一次登录时间：<%= userBean.getLastLoginTime() %></div>
-            <div class="visible-phone">
-	            <div>上一次登录时间</div>
-	            <div><%= userBean.getLastLoginTime() %></div>
+            <div class="layui-col-md9">
+                <div class="layui-panel margin-10all padding-20all">
+                    <ul class="layui-timeline">
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">基本信息</h3>
+                                <% 
+					            if(userBean.getRole() == RoleConfig.STUDENT){ 
+					            %>
+						            <div>学号：</div>
+						            <div>姓名：</div>
+						            <div>班级：</div>
+						            <div>年级：</div>
+						            <div>专业：</div>
+						            <div>院系：</div>
+					            <%
+					            }else if(userBean.getRole() == RoleConfig.TEACHER){ 
+					            %>
+						            <p>姓名：</p>
+						            <p>职称：</p>
+						            <p>教研室：</p>
+						            <p>院系：</p>
+					            <%
+					            }else if(userBean.getRole() == RoleConfig.ADMIN){ 
+					            %>
+					            	<p>管理员</p>
+					            <%
+					            } 
+					            %>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">账号信息</h3>
+                                <div>账号：<%= userBean.getAccount() %></div>
+                                <div>上一次登录时间：<%= userBean.getLastLoginTime() %></div>
+                                <div>上一次登录网点地址：<%= userBean.getLastLoginIp() %></div>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="hidden-phone">上一次登录网点地址：<%= userBean.getLastLoginIp() %></div>
-            <div class="visible-phone">
-	            <div>上一次登录网点地址</div>
-	            <div><%= userBean.getLastLoginIp() %></div>
-            </div>
-            <br>
-            <p><a href="<%= nextUrl %>" class="btn btn-primary btn-large">继续</a></p>
-		</div>
-    </div> <!-- /container -->
+        </div>
+        <div class="layui-row text-c margin-20all">
+            <a href="<%= nextUrl %>" class="layui-btn">继续</a>
+            <p class="margin-10all color-gray">十秒后自动继续</p>
+        </div>
+    </div>
+    
+	<div class="padding-30all">
+		<hr>
+	</div>
     
     <!-- 自动跳转 -->
 	<script type="text/javascript">

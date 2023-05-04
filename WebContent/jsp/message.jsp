@@ -5,6 +5,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+String currentPath = request.getContextPath();
+
 String title = "";
 String color = "";
 String info = TextUtil.getString(request.getAttribute(ConstantsConfig.REQUEST_TIPS_INFO), "");
@@ -27,19 +29,19 @@ if(obj instanceof Boolean){
 switch(sta) {
 	case SUCCESS:
 		title = "成功";
-		color = "text-success";
+		color = "msg-title-bg-success";
 		break;
 	case INFO:
 		title = "信息";
-		color = "text-info";
+		color = "msg-title-bg-info";
 		break;
 	case FAIL:
 		title = "失败";
-		color = "text-warning";
+		color = "msg-title-bg-warning";
 		break;
 	default:
 		title = "错误";
-		color = "text-error";
+		color = "msg-title-bg-error";
 		break;
 }
 
@@ -52,21 +54,35 @@ switch(sta) {
 	<jsp:include page="/jsp/head.jsp">
 		<jsp:param value="提示" name="pageTitle"/>
 	</jsp:include>
+	
+    <link rel="stylesheet" href="<%= currentPath %>/common/lectopic/css/message.css">
 </head>
 
 <body>
-    <div class="container margin-5p-up" >
-    	<h1 class="padding-bottom text-center <%= color %>"><%= title %></h1>
-        <div class="hero-unit text-center">
-            <h2 class="padding-bottom"><%= info %></h2>
-            <p>
-                <a href="<%= uri %>" class="btn btn-primary btn-large margin-up">继续</a>
-            </p>
-            <% if(isAutoSkip){ %>
-            	<p>三秒后自动继续</p>
-            <% } %>
+
+	<!-- 中间布局 -->
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md8 layui-col-md-offset2 msg-panel">
+                <!-- 卡片视图 -->
+                <div class="layui-card msg-card">
+                    <div class="layui-card-header msg-title <%= color %>">
+                        <h1><%= title %></h1>
+                    </div>
+                    <div class="layui-card-body msg-content">
+                        <p><%= info %></p>
+                    </div>
+                    <a href="<%= uri %>" class="layui-btn">继续</a>
+                    <% if(isAutoSkip){ %>
+		            	<p class="color-gray auto-text">三秒后自动继续</p>
+		            <% } %>
+                </div>
+                <!-- 卡片视图 -->
+            </div>
         </div>
-    </div> <!-- /container -->
+    </div>
+    <!-- 中间布局 -->
+
 
 	<!-- 自动跳转 -->
 	<% if(isAutoSkip){ %>
@@ -76,6 +92,10 @@ switch(sta) {
 			}, 3000);
 		</script>
 	<% } %>
+	
+	<div class="padding-30all">
+		<hr>
+	</div>
 	
 	<!-- 页脚 -->
 	<jsp:include page="/jsp/foot.jsp"></jsp:include>

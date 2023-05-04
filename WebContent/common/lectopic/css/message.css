@@ -1,0 +1,39 @@
+.msg-panel{
+    padding: 10%;
+}
+
+.msg-card{
+    text-align: center;
+}
+
+.msg-title{
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 2px;
+}
+
+.msg-content{
+    font-size: 24px;
+    padding: 40px;
+}
+
+.auto-text{
+    padding: 20px;
+    color: gray;
+}
+
+.msg-title-bg-info{
+    background-color: #dff5fc;
+}
+
+.msg-title-bg-success{
+    background-color: #e7f4ea;
+}
+
+.msg-title-bg-warning{
+    background-color: #fff4d8;
+}
+
+.msg-title-bg-error{
+    background-color: #ffe5dd;
+}

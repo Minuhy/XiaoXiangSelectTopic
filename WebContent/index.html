@@ -1,153 +1,284 @@
+<!DOCTYPE html>
 <html lang="zh-cmn-Hans-CN">
 
 <head>
-
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="潇湘毕设选题系统 - 程序设计：信息学院计应教研室玉米子">
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="潇湘毕设选题系统 - 程序设计：信息学院计应教研室">
     <meta name="author" content="玉米子">
-    <title>主页 - 毕设选题系统</title>
+    <title>开始使用 layui</title>
+
+    <script>
+        ; !function () { self !== parent && (location.href = "about:blank") }();
+    </script>
 
     <!-- 引入样式 -->
-    <link href="common/bootstrap-2.3.2/css/bootstrap.css" rel="stylesheet">
-    <link href="common/bootstrap-2.3.2/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="common/lectopic/css/common.css" rel="stylesheet">
-
-    <!-- HTML5填充程序，用于IE6-8对HTML5元素的支持 -->
-    <!--[if lt IE 9]>
-        <script src="common/html5shiv-3.6.2pre/html5shiv.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="common/layui-2.7.6/css/layui.css">
+    <link rel="stylesheet" href="common/lectopic/css/common.css">
 
     <!-- 图标 -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"
-        href="common/lectopic/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114"
-        href="common/lectopic/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72"
-        href="common/lectopic/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="common/lectopic/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="common/lectopic/ico/favicon.png">
+    <link rel="shortcut icon" href="common/lectopic/ico/favicon.ico">
+
+    <link href="common/static/css/global.css?t=27601" rel="stylesheet">
 </head>
 
 <body>
-    <div class="navbar navbar-top margin-2all margin-20down">
-        <div class="navbar-inner">
-            <div class="container">
-                <button type="button" class="btn btn-navbar btn-nav" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="brand brand1" href="#">
-                    <img src="common/lectopic/ico/apple-touch-icon-114-precomposed.gif" alt="潇湘毕设选题系统">
+    <div class="layui-layout layui-layout-admin">
+        <!-- 上方导航栏 开始 -->
+        <div class="layui-header header header-demo">
+            <div class="layui-fluid">
+                <!-- 图标跟标题 -->
+                <a class="logo" href="/v2/" style="color:#fff; font-size: 20px; margin-left: 0;">
+                    <img src="common/lectopic/favicon/favicon.gif" style="width: 28px;height: 28px;" alt="layui">
                     潇湘毕设选题系统
                 </a>
-                <div class="nav-collapse in collapse" style="height: auto;">
-                    <ul class="nav nav1">
-                        <li class="active"><a href="#">首页</a></li>
-                        <li><a href="#about">学生管理</a></li>
-                        <li><a href="#contact">教师管理</a></li>
-                        <li><a href="#contact">选题管理</a></li>
-                        <li><a href="#contact">选题情况管理</a></li>
-                        <li><a href="#contact">时间表管理</a></li>
-                        <li><a href="#contact">学院管理</a></li>
-                        <li><a href="#contact">教研室管理</a></li>
-                        <li><a href="#contact">专业管理</a></li>
-                        <li><a href="#contact">班级管理</a></li>
-                    </ul>
-                    <ul class="nav nav1 pull-right">
-                        <li><a href="#about">用户昵称</a></li>
-                        <li><a href="#about">设置</a></li>
-                        <li><a href="#contact">退出</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+                <!-- 上方导航菜单栏 -->
+                <ul class="layui-nav" id="LAY_NAV_TOP">
+                    <li class="layui-nav-item" data-dir="docs">
+                        <a href="/v2/docs/">我的</a>
+                    </li>
+                    <li id="logoutLi" class="layui-nav-item" data-dir="demo">
+                        <a id="logoutBtn" data-method="logout" href="javascript:;">退出</a>
+                    </li>
+                </ul>
             </div>
         </div>
+        <!-- 上方导航栏 结束 -->
+
+
+
+        <!-- 侧方导航栏 开始 -->
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree site-demo-nav">
+                    <li class="layui-nav-item layui-nav-itemed layui-this">
+                        <a href="javascript:;">首页</a>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">学生</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="/v2/demo/grid.html">学生管理</a>
+                            </dd>
+                            <dd>
+                                <a href="/v2/demo/admin.html">学生导入</a>
+                            </dd>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">教师</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="/v2/demo/grid.html">教师管理</a>
+                            </dd>
+                            <dd>
+                                <a href="/v2/demo/admin.html">教师导入</a>
+                            </dd>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">选题</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="/v2/demo/grid.html">选题管理</a>
+                            </dd>
+                            <dd>
+                                <a href="/v2/demo/grid.html">选题情况</a>
+                            </dd>
+                            <dd>
+                                <a href="/v2/demo/admin.html">选题导入</a>
+                            </dd>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">进度</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="/v2/demo/grid.html">进度管理</a>
+                            </dd>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">组织结构</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="/v2/demo/grid.html">组织结构管理</a>
+                            </dd>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item" style="height: 30px; text-align: center"></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 侧方导航栏 结束 -->
+
+        <!-- 主内容 开始 -->
+        <div class="layui-body site-demo">
+            <div class="layui-main">
+                <!-- 主内容 内容 开始 -->
+                <!-- **************************************************************************************************** -->
+                <div class="layui-row">
+                    <div class="layui-col-md12">
+                        <div class="layui-panel padding-30all">
+                            <h1 class="font-30p">管理首页</h1>
+                            <div class="margin-10all">
+                                <p class="p-2indent">欢迎您，系统管理员，你可以对系统中的所有数据进行修改。本页面展示一些系统统计信息。</p>
+                                <p class="p-2indent">
+                                    作为学生毕设系统管理员，需要与指导教师和学生进行沟通，解决毕设过程中出现的问题。还需要保证毕设资料的完整性和安全性，防止数据泄露或丢失。最后，还需要积极推动毕设工作的顺利进行，保证毕设工作的质量和进度，定期向指导教师和学生汇报毕设进展情况。
+                                </p>
+                                <p class="p-2indent">
+                                    作为系统管理员，需要具备良好的文字表达能力、沟通能力、组织协调能力和团队合作精神，同时还需要具备较强的责任心、耐心和细心，以确保毕设工作的顺利进行。感谢您的支持和理解，遇到任何问题，请点击下方按钮联系我们。
+                                </p>
+                            </div>
+                            <p class="text-r margin-20all">
+                                <a id="linkWe" class="layui-btn">联系我们</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-md12 padding-30all">
+                        <h1 class="font-30p margin-20down margin-10all">概览</h1>
+                        <div class="layui-col-md3">
+                            <div class="layui-panel margin-10all">
+                                <div class="padding-30all text-c">
+                                    <h2 class="font-40p">8</h2>
+                                    <p class="font-16p">系统中学生总人数</p>
+                                    <a class="layui-btn  layui-btn-primary" href="#">管理学生</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md3">
+                            <div class="layui-panel margin-10all">
+                                <div class="padding-30all text-c">
+                                    <h2 class="font-40p">8</h2>
+                                    <p class="font-16p">系统中教师总人数</p>
+                                    <a class="layui-btn  layui-btn-primary" href="#">管理教师数据</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md3">
+                            <div class="layui-panel margin-10all">
+                                <div class="padding-30all text-c">
+                                    <h2 class="font-40p">8</h2>
+                                    <p class="font-16p">系统中选题总数量</p>
+                                    <a class="layui-btn  layui-btn-primary" href="#">管理选题数据</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md3">
+                            <div class="layui-panel margin-10all">
+                                <div class="padding-30all text-c">
+                                    <h2 class="font-40p">8</h2>
+                                    <p class="font-16p">系统中已选总数</p>
+                                    <a class="layui-btn  layui-btn-primary" href="#">管理选题情况</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- **************************************************************************************************** -->
+                <!-- 主内容 内容 结束 -->
+            </div>
+        </div>
+        <!-- 主内容 结束 -->
+
+        <!-- 页脚 开始 -->
+        <div class="layui-footer footer footer-demo">
+            <p>
+                Copyright &copy; 2022 <a href="/v2/">layui</a> MIT Licensed
+            </p>
+        </div>
+        <!-- 页脚 开始 -->
+
+        <!-- 返回顶部按钮 -->
+        <script>
+            window.global = {
+                pageType: 'demo'
+                , preview: function () {
+                    var preview = document.getElementById('LAY_preview');
+                    return preview ? preview.innerHTML : '';
+                }()
+            };
+        </script>
+
+        <!-- 手机侧边栏打开开关 -->
+        <div class="site-tree-mobile layui-hide">
+            <i class="layui-icon layui-icon-spread-left"></i>
+        </div>
+
+        <!-- 手机侧边栏关闭区域 -->
+        <div class="site-mobile-shade"></div>
+
+        <!-- 引入 Layui -->
+        <script src="common/layui-2.7.6/layui.js"></script>
+        <script>
+            // 引入 Layui 模块
+            layui.config({
+                base: 'common/static/js/'
+                , version: '27601'
+            }).use('global');
+        </script>
+        <script>
+            layui.use('layer', function () { //独立版的layer无需执行这一句
+                var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+                //触发事件
+                var active = {
+                    logout: function () {
+                        layer.open({
+                            type: 1
+                            , title: "退出登录" //显示标题栏
+                            , closeBtn: false
+                            , area: '300px;'
+                            , shade: 0.8
+                            , time: 20000 //20s后自动关闭
+                            , id: 'logout_tips' //设定一个id，防止重复弹出
+                            , btn: ['确定', '取消']
+                            , btnAlign: 'c'
+                            , moveType: 0 //拖拽模式，0或者1
+                            , content: '<div style="text-align:center;padding:20px;font-size:18px;">确定要退出吗？</div>'
+                            , btn2: function (index, layero) {
+                                $("#logoutLi").removeClass("layui-this");
+                                console.log('取消退出');
+                            }, btn1: function (index, layero) {
+                                window.location.href = "http://www.baidu.com";
+                                console.log('退出登录');
+                            }
+                        });
+                    }
+                };
+
+                $('#logoutBtn').on('click', function () {
+                    var othis = $(this), method = othis.data('method');
+                    active[method] ? active[method].call(this, othis) : '';
+                });
+
+            });
+        </script>
+
+        <script>
+            layui.use('layer', function () { //独立版的layer无需执行这一句
+                var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+                $('#linkWe').on('click', function () {
+                    layer.open({
+                        title: '联系我们'
+                        , content: 'bilibili：https://space.bilibili.com/32778000'
+                    });
+                });
+            });
+        </script>
     </div>
-    <div class="container">
-        <div class="hero-unit">
-            <h1>管理首页</h1>
-            <div class="margin-10all">
-                <p class="p-2indent">欢迎您，系统管理员，你可以对系统中的所有数据进行修改。本页面展示一些系统统计信息。</p>
-                <p class="p-2indent">
-                    作为学生毕设系统管理员，需要与指导教师和学生进行沟通，解决毕设过程中出现的问题。还需要保证毕设资料的完整性和安全性，防止数据泄露或丢失。最后，还需要积极推动毕设工作的顺利进行，保证毕设工作的质量和进度，定期向指导教师和学生汇报毕设进展情况。
-                </p>
-                <p class="p-2indent">
-                    作为系统管理员，需要具备良好的文字表达能力、沟通能力、组织协调能力和团队合作精神，同时还需要具备较强的责任心、耐心和细心，以确保毕设工作的顺利进行。感谢您的支持和理解，遇到任何问题，请点击下方按钮联系我们。
-                </p>
-            </div>
-            <p class="text-right"><a href="#linkModal" role="button" data-toggle="modal"
-                    class="btn btn-primary btn-large">联系我们</a></p>
-        </div>
-        <h2>概览</h2>
-        <hr>
-        <div class="row">
-            <div class="span3 text-center">
-                <h2>80</h2>
-                <h3 class="lead">系统中学生总人数</h3>
-                <p><a class="btn" href="#">管理学生</a></p>
-            </div>
-            <div class="span3 text-center">
-                <h2>80</h2>
-                <h3 class="lead">系统中学生总人数</h3>
-                <p><a class="btn" href="#">管理学生</a></p>
-            </div>
-            <div class="span3 text-center">
-                <h2>80</h2>
-                <h3 class="lead">系统中学生总人数</h3>
-                <p><a class="btn" href="#">管理学生</a></p>
-            </div>
-            <div class="span3 text-center">
-                <h2>80</h2>
-                <h3 class="lead">系统中学生总人数</h3>
-                <p><a class="btn" href="#">管理学生</a></p>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Modal -->
-    <div id="linkModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="linkModalLabel"
-        aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="linkModalLabel">联系我们</h3>
-        </div>
-        <div class="modal-body">
-            <p>哔哩哔哩首页：<a href="https://space.bilibili.com/32778000">https://space.bilibili.com/32778000</a></p>
-            <p>码云首页：<a href="https://gitee.com/Minuhy">https://gitee.com/Minuhy</a></p>
-            <p>CSDN首页：<a href="https://blog.csdn.net/XiaoYuHaoAiMin">https://blog.csdn.net/XiaoYuHaoAiMin</a></p>
-            <p>博客园首页：<a href="https://www.cnblogs.com/Minuhy/">https://www.cnblogs.com/Minuhy/</a></p>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">关闭</button>
-        </div>
-    </div>
-
-    <!-- 页脚 -->
-    <div id="footer">
-        <hr>
-        <div class="container text-center">
-            <p class="muted margin-5p-up">由 <a href="https://space.bilibili.com/32778000">敏Ymm</a> 使用 <a
-                    href="https://www.java.com/zh-CN/">Java</a> 制作</p>
-        </div>
-    </div>
-
-    <!-- 引入JavaScript脚本文件 -->
-    <!-- 放置在文档末尾，以便页面加载更快 -->
-
-    <!-- jquery 和 bootstrap -->
-    <script src="common/jquery-1.9.1/jquery.js"></script>
-    <script src="common/bootstrap-2.3.2/js/bootstrap.js"></script>
-
-    <!-- 其他JS代码 -->
-
-
-
-
 </body>
 
 </html>

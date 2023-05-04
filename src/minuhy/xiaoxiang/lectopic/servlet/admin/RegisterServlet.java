@@ -82,7 +82,7 @@ public class RegisterServlet extends BaseServlet {
 				userEntity.setNick(CommonConfig.getAdminUsername());
 				userEntity.setCreateTimestamp(timeMs);
 				userEntity.setCreateBy(0);
-				userEntity.setAvatar("h000.png");
+				userEntity.setAvatar("h000.gif");
 
 				// ´æÈëÊı¾İ¿â
 				if (userDb.writeUser(userEntity)) {

@@ -31,108 +31,95 @@ if(obj instanceof UserBean && ((UserBean) obj).getId() > 0){
 	<jsp:include page="/jsp/head.jsp">
 		<jsp:param value="登录" name="pageTitle"/>
 	</jsp:include>
+	
     <link href="<%= currentPath %>/common/lectopic/css/login.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <div class="text-center">
+
+	<div class="login-plan">
+
+        <div class="text-c">
             <h1 class="padding-bottom">毕设选题系统</h1>
-            <h2 class="form-signin-heading lead">登录</h2>
+            <h2>登录</h2>
         </div>
-        <form action="<%= currentPath %>/user/login" class="form-signin" method="post">
-            <!-- 账号输入框 -->
-            <div>
-                <label>
-                    账号：
+
+        <form class="layui-form"  action="<%= currentPath %>/user/login"  method="post">
+            <div class="layui-form-item">
+                <label>账号</label>
+                <input 
+                    class="layui-input" 
+                    value="admin" 
+                    type="text" 
+                    name="username" 
+                    placeholder="请输入账号"
+                    required="required" 
+                    oninvalid="setCustomValidity('请输入你的账号');" 
+                    oninput="setCustomValidity('');"
+                    autofocus="autofocus">
+            </div>
+            <div class="layui-form-item">
+                <label>密码</label>
+                <input 
+                    class="layui-input" 
+                    value="123456" 
+                    type="password" 
+                    name="password" 
+                    placeholder="请输入密码"
+                    required="required" 
+                    oninvalid="setCustomValidity('请输入账号的密码');" 
+                    oninput="setCustomValidity('');"
+                    autocomplete="off">
+            </div>
+            <div class="layui-form-item">
+                <div>
+                    <label>验证码</label>
+                </div>
+                <div>
                     <input 
-                        value="admin"
+                        class="layui-input captcha-input" 
+                        value="a" 
                         type="text" 
-                        class="input-block-level" 
-                        name="username" 
-                        placeholder="请输入账号" 
+                        name="captcha" 
+                        placeholder="请输入验证码"
                         required="required" 
-                        oninvalid="setCustomValidity('请输入你的账号');" 
-                        oninput="setCustomValidity('');" 
-                        autofocus="autofocus">
-                </label>
+                        oninvalid="setCustomValidity('请输入右边图片验证码的结果');"
+                        oninput="setCustomValidity('');">
+                    <div class="captcha-img">
+                        <img 
+                        	id="captchaImg" 
+                        	alt="验证码" 
+                        	src="<%= currentPath %>/util/captcha">
+                    </div>
+                </div>
             </div>
-            <!-- 密码输入框 -->
-            <div>
-                <label>
-                    密码：
-                    <input 
-                    	value="123456"
-                        type="password" 
-                        class="input-block-level" 
-                        name="password" 
-                        placeholder="请输入密码" 
-                        required="required" 
-                        oninvalid="setCustomValidity('请输入账号的密码');" 
-                        oninput="setCustomValidity('');" 
-                        autocomplete="off">
-                </label>
-            </div>
-            <!-- 验证码输入框 -->
-            <div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td class="input-td">
-                                <label>
-                                    验证码：
-                                    <input 
-                                    	value="a"
-                                        type="text"  
-                                        name="captcha"
-                                        class="input-block-level"
-                                        placeholder="请输入验证码" 
-                                        required="required" 
-                                        oninvalid="setCustomValidity('请输入右边图片验证码的结果');" 
-                                        oninput="setCustomValidity('');">
-                                </label>
-                            </td>
-                            <td>
-                                <img 
-                                    id="captchaImg" 
-                                    alt="验证码" 
-                                    src="<%= currentPath %>/util/captcha">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="text-right">
-                <button class="btn btn-large btn-primary" type="submit">登录</button>
+
+            <div class="layui-form-item text-c">
+                <input class="layui-btn  login-btn" type="submit" value="登录"></input>
             </div>
         </form>
 
-        <div class="text-center">
-            <a href="#notHaveAccountModal" role="button" class="btn" data-toggle="modal">没有账号？</a>
+
+        <div class="text-c">
+            <a id="btnHelp" data-method="offset" data-type="auto"
+                class="layui-btn layui-btn-primary layui-btn-sm layui-btn-radius">没有账号？</a>
         </div>
 
-    </div> <!-- /container -->
-
-
-    <!-- 没有账号模态框 -->
-    <div id="notHaveAccountModal" class="modal hide fade" tabindex="-1" role="dialog"
-        aria-labelledby="notHaveAccountModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="notHaveAccountModalLabel">没有账号</h3>
-        </div>
-        <div class="modal-body">
-            <p>请联系老师处理</p>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">确定</button>
-        </div>
     </div>
 
+	<div class="padding-30all">
+		<hr>
+	</div>
+	
 	<!-- 页脚 -->
 	<jsp:include page="/jsp/foot.jsp"></jsp:include>
 	<!-- 本页JS -->
 	<script src="<%= currentPath %>/common/lectopic/js/login.js"></script>
+	
+	<script type="text/javascript">
+		var notHaveAccountTitle = "没有账号？";
+		var notHaveAccountContent = "请联系老师处理";
+	</script>
 </body>
 
 </html>

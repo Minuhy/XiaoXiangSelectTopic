@@ -124,7 +124,7 @@ public class LoginServlet extends BaseServlet {
 					// 之前的页面
 					String prePage = TextUtil.getString(session.getAttribute(ConstantsConfig.SESSION_LOGIN_SOURCE), // 登录前访问的页面
 							UriConfig.INDEX); // 没有则为默认值
-
+					
 					session.removeAttribute(ConstantsConfig.SESSION_LOGIN_SOURCE);
 
 					String welcome = "欢迎你，" + userEntity.getNick();

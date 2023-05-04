@@ -22,48 +22,50 @@ if (!(obj instanceof Boolean && ((Boolean) obj))) {
 </head>
 
 <body>
-    <div class="container">
-        <div class="text-center">
-            <h1 class="padding-bottom">新系统管理员账号注册</h1>
-            <h2 class="form-signin-heading lead">为管理员账号设置一个新密码</h2>
+
+    <div class="login-plan">
+
+        <div class="text-c">
+            <h1 class="padding-bottom">系统管理员账号注册</h1>
+            <h2>为管理员账号设置一个新密码</h2>
         </div>
-        <form action="<%= currentPath %>/admin/register" class="form-signin" method="post">
-            <!-- 密码输入框 -->
-            <div>
-                <label>
-                    请设置密码：
-                    <input 
-                        type="password" 
-                        class="input-block-level" 
-                        name="password" 
-                        placeholder="请输入密码" 
-                        required="required" 
-                        oninvalid="setCustomValidity('请输入密码');" 
-                        oninput="setCustomValidity('');" 
-                        autocomplete="off">
-                </label>
+
+        <form class="layui-form" action="<%= currentPath %>/admin/register" method="post">
+            
+            <div class="layui-form-item">
+                <label>请设置密码</label>
+                <input 
+                    class="layui-input" 
+                    value="123456" 
+                    type="password" 
+                    name="password" 
+                    placeholder="请输入密码"
+                    required="required" 
+                    oninvalid="setCustomValidity('请输入密码');" 
+                    oninput="setCustomValidity('');"
+                    autocomplete="off">
             </div>
-            <!-- 密码输入框 -->
-            <div>
-                <label>
-                    请确认密码：
-                    <input 
-                        type="password" 
-                        class="input-block-level" 
-                        name="repasswd" 
-                        placeholder="请再次输入密码" 
-                        required="required" 
-                        oninvalid="setCustomValidity('请再次输入密码');" 
-                        oninput="setCustomValidity('');" 
-                        autocomplete="off">
-                </label>
+
+            <div class="layui-form-item">
+                <label>请确认密码</label>
+                <input 
+                    class="layui-input" 
+                    value="123456" 
+                    type="password" 
+                    name="repasswd" 
+                    placeholder="请再次输入密码"
+                    required="required" 
+                    oninvalid="setCustomValidity('请再次输入密码');" 
+                    oninput="setCustomValidity('');"
+                    autocomplete="off">
             </div>
-           
-            <div class="text-right">
-                <button class="btn btn-large btn-primary" type="submit">注册</button>
+
+            <div class="layui-form-item text-c">
+                <input class="layui-btn  login-btn" type="submit" value="注册"></input>
             </div>
         </form>
-    </div> <!-- /container -->
+    </div>
+
 
 	<!-- 页脚 -->
 	<jsp:include page="/jsp/foot.jsp"></jsp:include>

@@ -136,8 +136,8 @@ public class UserDb extends Executant {
 	 */
 	public boolean writeUser(UserEntity userEntity) throws SQLException {
 		String sql = "INSERT INTO `t_user`" 
-				+ "(`account`,`role`, `passwd`, `nick`, `create_timestamp`, `create_by`) "
-				+ "VALUES (?, ?, ?, ?,?,?)";
+				+ "(`account`,`role`, `passwd`, `nick`, `create_timestamp`, `create_by`,`avatar`) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		if (CommonConfig.isDebug()) {
 			log.debug("×¢²á£º{}£¬{}", sql, userEntity.toString());
@@ -151,7 +151,8 @@ public class UserDb extends Executant {
 					userEntity.getPasswd(), 
 					userEntity.getNick(),
 					String.valueOf(userEntity.getCreateTimestamp()),
-					String.valueOf(userEntity.getCreateBy())
+					String.valueOf(userEntity.getCreateBy()),
+					userEntity.getAvatar()
 				);
 
 			if (CommonConfig.isDebug()) {

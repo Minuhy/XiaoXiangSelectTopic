@@ -42,7 +42,7 @@ public class CaptchaServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		minuhy.xiaoxiang.lectopic.util.CaptchaUtil.CaptchaInfo info = 
-				captchaUtil.GgenerateCaptcha(80,25,3,14,"ËÎÌו");
+				captchaUtil.GgenerateCaptcha(115,36,3,16,"ËÎÌו");
 		
 		int t = RequestUtil.getReqParam(req, "t", 0);
 		if(CommonConfig.isDebug()) {
