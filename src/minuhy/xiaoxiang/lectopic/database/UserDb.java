@@ -202,4 +202,72 @@ public class UserDb extends Executant {
 		}
 		return result > 0;
 	}
+	
+	/**
+	 * 更改密码
+	 * @param userId 用户ID
+	 * @param rawPwd 原密码
+	 * @param newPwd 新密码
+	 * @return 成功true，失败false
+	 * @throws SQLException
+	 * @time 2023-5-6 1:04:12
+	 */
+	public boolean updatePasswd(int userId,String rawPwd,String newPwd) throws SQLException {
+		String sql = "UPDATE `t_user` " + 
+				"SET `passwd` = IF(`passwd`= ? ,?,`passwd`) " + 
+				"WHERE `id`= ?";
+		if (CommonConfig.isDebug()) {
+			log.debug("更新密码：{}，{}，{}，{}", sql, userId,rawPwd,newPwd);
+		}
+
+		int result = 0;
+		try {
+			result = update(sql, 
+					rawPwd,
+					newPwd,
+					String.valueOf(userId)
+				);
+
+			if (CommonConfig.isDebug()) {
+				log.debug("更新密码：{}", result);
+			}
+		} finally {
+			close();
+		}
+		return result > 0;
+	}
+	
+	/**
+	 * 更新更新时间
+	 * 
+	 * @param id          用户ID
+	 * @param currentTime 时间戳
+	 * @return 成功/否 
+	 * @throws SQLException SQL异常
+	 */
+	public boolean updateUpdateTimestamp(int id, long currentTime) throws SQLException {
+		String sql = "UPDATE `t_user` "
+				+ "SET `update_timestamp` = ? "
+				+ "WHERE `id` = ?";
+
+		if (CommonConfig.isDebug()) {
+			log.debug("更新更新時間：{}，{}，{}", sql, id, currentTime);
+		}
+
+		int result = 0;
+		try {
+			result = update(sql, 
+					String.valueOf(currentTime), 
+					String.valueOf(id)
+				);
+
+			if (CommonConfig.isDebug()) {
+				log.debug("更新时间戳：{}", result);
+			}
+		} finally {
+			close();
+		}
+		return result > 0;
+	}
+	
 }

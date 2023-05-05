@@ -139,4 +139,12 @@ public class UserBean {
 		return userEntity.getNick();
 	}
 	
+	/**
+	 * 获取时间戳字符串，用于加密密码
+	 * @return
+	 * @time 2023-5-6 0:58:11
+	 */
+	public String getCreateTimestamp() {
+		return String.valueOf(userEntity.getCreateTimestamp());
+	}
 }

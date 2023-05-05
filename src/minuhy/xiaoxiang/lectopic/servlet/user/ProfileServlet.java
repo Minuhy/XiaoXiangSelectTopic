@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import minuhy.xiaoxiang.lectopic.config.CommonConfig;
-import minuhy.xiaoxiang.lectopic.config.UriConfig;
 import minuhy.xiaoxiang.lectopic.database.UserDb;
 import minuhy.xiaoxiang.lectopic.entity.UserEntity;
 import minuhy.xiaoxiang.lectopic.servlet.common.BaseUserServlet;
@@ -122,7 +121,7 @@ public class ProfileServlet extends BaseUserServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			log.error("数据库错误：{}", e);
-			forwardErrorInfoPage("数据库错误", UriConfig.LOGIN);
+			forwardErrorInfoPage("数据库错误", profileUrl);
 			return;
 		}
 		

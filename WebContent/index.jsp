@@ -88,7 +88,7 @@ if(obj instanceof Boolean && ((Boolean)obj)){
         </div>
         <div class="layui-row text-c margin-20all">
             <a href="<%= nextUrl %>" class="layui-btn">继续</a>
-            <p class="margin-10all color-gray">十秒后自动继续</p>
+            <p class="margin-20all color-gray">十秒后自动继续</p>
         </div>
     </div>
     

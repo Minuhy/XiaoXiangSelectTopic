@@ -7,7 +7,7 @@
 
 <head>
 	<jsp:include page="/jsp/head.jsp">
-		<jsp:param value="我的资料" name="pageTitle"/>
+		<jsp:param value="修改基本资料" name="pageTitle"/>
 	</jsp:include>
 	<!-- 官网全局样式 -->
 	<link href="<%= currentPath %>/common/static/css/global.css?t=27601" rel="stylesheet">
@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
-                                    <button class="layui-btn">保存基本资料</button>
+                                    <input type="submit" class="layui-btn" value="保存基本资料">
                                 </div>
                             </form>
 

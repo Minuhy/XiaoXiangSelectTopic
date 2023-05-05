@@ -108,7 +108,7 @@ if(curPage != null){
 	            <% } %>
 
                 <li class="layui-nav-item <%= maxPage==6?"layui-this":"" %>">
-                    <a href="javascript:;">修改登录密码</a>
+                    <a href="<%= currentPath %>/jsp/common/password.jsp">修改登录密码</a>
                 </li>
         	<% } else if("other".equals(panel)) { %>
         		<!-- 其他界面 开始 -->

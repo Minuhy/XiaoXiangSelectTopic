@@ -89,72 +89,46 @@
             <div class="layui-main">
                 <!-- 主内容 内容 开始 -->
                 <!-- **************************************************************************************************** -->
-                
-        <div class="text-c padding-20all">
-            <p>哔哩哔哩：<a style="color: blue;" href="https://space.bilibili.com/32778000">敏Ymm</a></p>
-            <p>博客园：<a style="color: blue;" href="https://www.cnblogs.com/minuhy">清风来叙</a></p>
-            <p>GitHub：<a style="color: blue;" href="https://github.com/minuhy">Minuhy</a></p>
-            <p>CSDN：<a style="color: blue;" href="https://blog.csdn.net/XiaoYuHaoAiMin">_清风来叙</a></p>
-            <p>码云：<a style="color: blue;" href="https://gitee.com/minuhy">清风来叙</a></p>
-        </div>
+
 
                 <div class="layui-row">
-                    <div class="layui-col-md12">
-                        <div class="layui-panel padding-30all text-c">
-                            <img id="userAvatarImg" alt="<%= userBean.getNick() %>的头像" src="<%= currentPath + userBean.getAvatarPath() %>"
-                                width="120" height="120" class="img-circle img-thumbnail">
+                    <div class="layui-panel padding-30all text-c">
 
-                            <div class="padding-20all">
-                                <div id="chooseAvatar" data-method="chooseAvatar" class="layui-btn layui-btn-primary">
-                                    更换头像</div>
+
+                        <form class="layui-form layui-form-pane" action="">
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">账号</label>
+                                <div class="layui-input-block">
+                                    <input value="" type="text" readonly autocomplete="off" class="layui-input">
+                                </div>
                             </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">原密码</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="rawPassword" autocomplete="off" placeholder="请输入原密码"
+                                        class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">新密码</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="newPassword" autocomplete="off" placeholder="请设置新密码"
+                                        class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">确认新密码</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="renewPassword" autocomplete="off" placeholder="请确认新密码"
+                                        class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item margin-20all">
+                                <input type="submit" class="layui-btn" value="确认修改登录密码"></input>
+                            </div>
+                        </form>
 
-                            <form class="layui-form layui-form-pane" action="">
-                                <!-- 头像 -->
-                            	<input id="avatarInput" name="avatar" type="hidden" value="" >
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">昵称</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="nick" required="" placeholder="请设置昵称"
-                                            autocomplete="off" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">性别</label>
-                                    <div class="layui-input-block">
-                                        <select name="sex" title="请设置性别">
-                                            <option value="0">不设置</option>
-                                            <option value="1">男</option>
-                                            <option value="2">女</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">邮箱</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="email" placeholder="请设置邮箱" autocomplete="off"
-                                            class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">手机</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="phone" required="" placeholder="请设置手机号"
-                                            autocomplete="off" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item layui-form-text">
-                                    <label class="layui-form-label">签名</label>
-                                    <div class="layui-input-block">
-                                        <textarea placeholder="请设置签名" class="layui-textarea"></textarea>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <button class="layui-btn">保存基本资料</button>
-                                </div>
-                            </form>
-
-                        </div>
                     </div>
                 </div>
 
@@ -320,7 +294,7 @@
         <!-- 引入 Layui -->
         <script src="common/layui-2.7.6/layui.js"></script>
         <script>
-            var currentPath="";
+            var currentPath = "";
             // 引入 Layui 模块
             layui.config({
                 base: 'common/static/js/'
@@ -360,17 +334,6 @@
                 $('#logoutBtn').on('click', function () {
                     var othis = $(this), method = othis.data('method');
                     active[method] ? active[method].call(this, othis) : '';
-                });
-            });
-        </script>
-        <script>
-            layui.use('layer', function () { //独立版的layer无需执行这一句
-                var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
-                $('#linkWe').on('click', function () {
-                    layer.open({
-                        title: '联系我们'
-                        , content: 'bilibili：https://space.bilibili.com/32778000'
-                    });
                 });
             });
         </script>

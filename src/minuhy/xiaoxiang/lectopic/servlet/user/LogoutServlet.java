@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import minuhy.xiaoxiang.lectopic.config.CommonConfig;
 import minuhy.xiaoxiang.lectopic.config.ConstantsConfig;
 import minuhy.xiaoxiang.lectopic.config.UriConfig;
 import minuhy.xiaoxiang.lectopic.servlet.common.BaseUserServlet;
@@ -19,10 +23,14 @@ import minuhy.xiaoxiang.lectopic.servlet.common.BaseUserServlet;
 @WebServlet("/user/logout")
 public class LogoutServlet extends BaseUserServlet {
 	private static final long serialVersionUID = 7971537569019139666L;
-
+	private static final Logger log = LoggerFactory.getLogger(LogoutServlet.class);
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		session.removeAttribute(ConstantsConfig.SESSION_USER_BEAN_NAME);
 		session.invalidate();
+		
+		if(CommonConfig.isDebug()) {
+			log.debug("退出登录：{}，{}",userBean.getId(),userBean.getAccount());
+		}
 		
 		forwardSuccessTipsPage("退出登录成功", UriConfig.LOGIN);
 	}
