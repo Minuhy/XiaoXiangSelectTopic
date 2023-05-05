@@ -11,7 +11,7 @@
  Target Server Version : 100428
  File Encoding         : 65001
 
- Date: 04/05/2023 11:53:38
+ Date: 05/05/2023 13:46:08
 */
 
 SET NAMES utf8mb4;
@@ -116,6 +116,7 @@ CREATE TABLE `t_teacher`  (
   `user_id` int(10) UNSIGNED NOT NULL COMMENT '绑定的用户ID',
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键，唯一',
   `active` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '是否激活：1激活，0禁用',
+  `number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '工号',
   `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '姓名',
   `title` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '职称',
   `college` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '院系',
@@ -169,26 +170,26 @@ CREATE TABLE `t_user`  (
   `passwd` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '密码，登录用，MD5加密',
   `role` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '角色，0：学生，1：老师，2：管理员',
   `nick` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '昵称',
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '用户邮箱',
-  `phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '手机号码',
-  `signature` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '签名',
+  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户邮箱',
+  `phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '手机号码',
+  `signature` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '签名',
   `sex` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '性别，0：未设置，1：男，2：女',
-  `avatar` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '头像地址',
+  `avatar` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '头像地址',
   `has_new_msg` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '新消息计数',
-  `create_by` int(10) UNSIGNED NOT NULL COMMENT '创建者',
-  `update_by` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '更新者',
+  `create_by` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '创建者',
+  `update_by` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新者',
   `create_timestamp` bigint(20) UNSIGNED NOT NULL COMMENT '创建时间',
-  `update_timestamp` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后修改时间',
-  `last_login_timestamp` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后登录时间',
-  `last_login_ip` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '最后登录IP',
+  `update_timestamp` bigint(20) UNSIGNED NULL DEFAULT 0 COMMENT '最后修改时间',
+  `last_login_timestamp` bigint(20) UNSIGNED NULL DEFAULT 0 COMMENT '最后登录时间',
+  `last_login_ip` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '最后登录IP',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`, `account`) USING BTREE,
   INDEX `id`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 106 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 108 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES (105, 1, 'admin', '27csvtirid3bl2m2e84rj4upd4', 2, 'admin', '', '', '', 0, 'h000.gif', 0, 0, NULL, 1683101824764, 0, 1683172142398, '192.168.70.128', NULL);
+INSERT INTO `t_user` VALUES (107, 1, 'admin', '5bp85hb7ot68kuus6j5u20nbkm', 2, 'admin', NULL, NULL, NULL, 0, 'h000.gif', 0, 0, 0, 1683220944593, 0, 1683264779246, '127.0.0.1', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
