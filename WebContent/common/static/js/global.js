@@ -65,7 +65,7 @@ layui.define(["code", "element", "table", "util", "carousel", "laytpl"], functio
             value: layui.v
         })
     }),
-    _ = a(['<select lay-search lay-filter="component">', '<option value="">\u641c\u7d22\u7ec4\u4ef6\u6a21\u5757</option>', '<option value="element/layout.html">grid \u6805\u683c\u5e03\u5c40</option>', '<option value="element/layout.html#admin">layout admin \u5e03\u5c40</option>', '<option value="element/color.html">color \u989c\u8272</option>', '<option value="element/icon.html">iconfont \u5b57\u4f53\u56fe\u6807</option>', '<option value="base/element.html#css">font \u5b57\u4f53\u5927\u5c0f \u989c\u8272</option>', '<option value="element/anim.html">animation \u52a8\u753b</option>', '<option value="element/button.html">button \u6309\u94ae</option>', '<option value="element/form.html">form \u8868\u5355\u7ec4</option>', '<option value="element/form.html#input">input \u8f93\u5165\u6846</option>', '<option value="element/form.html#select">select \u4e0b\u62c9\u9009\u62e9\u6846</option>', '<option value="element/form.html#checkbox">checkbox \u590d\u9009\u6846</option>', '<option value="element/form.html#switch">switch \u5f00\u5173</option>', '<option value="element/form.html#radio">radio \u5355\u9009\u6846</option>', '<option value="element/form.html#textarea">textarea \u6587\u672c\u57df</option>', '<option value="element/nav.html">nav \u5bfc\u822a\u83dc\u5355</option>', '<option value="element/menu.html">menu \u57fa\u7840\u901a\u7528\u83dc\u5355</option>', '<option value="element/nav.html#breadcrumb">breadcrumb \u9762\u5305\u5c51</option>', '<option value="element/tab.html">tabs \u9009\u9879\u5361</option>', '<option value="element/progress.html">progress \u8fdb\u5ea6\u6761</option>', '<option value="element/panel.html">panel \u9762\u677f / card</option>', '<option value="element/collapse.html">collapse \u6298\u53e0\u9762\u677f/\u624b\u98ce\u7434</option>', '<option value="element/table.html">table \u8868\u683c\u5143\u7d20</option>', '<option value="element/badge.html">badge \u5fbd\u7ae0</option>', '<option value="element/timeline.html">timeline \u65f6\u95f4\u7ebf</option>', '<option value="element/auxiliar.html#blockquote">blockquote \u5f15\u7528\u5757</option>', '<option value="element/auxiliar.html#fieldset">fieldset \u5b57\u6bb5\u96c6</option>', '<option value="element/auxiliar.html#hr">hr \u5206\u5272\u7ebf</option>', '<option value="modules/layer.html">layer \u5f39\u51fa\u5c42/\u5f39\u7a97\u7efc\u5408</option>', '<option value="modules/laydate.html">laydate \u65e5\u671f\u65f6\u95f4\u9009\u62e9\u5668</option>', '<option value="modules/laypage.html">laypage \u5206\u9875</option>', '<option value="modules/laytpl.html">laytpl \u6a21\u677f\u5f15\u64ce</option>', '<option value="modules/table.html">table \u6570\u636e\u8868\u683c</option>', '<option value="modules/form.html">form \u8868\u5355\u6a21\u5757</option>', '<option value="modules/upload.html">upload \u6587\u4ef6/\u56fe\u7247\u4e0a\u4f20</option>', '<option value="modules/dropdown.html">dropdown \u4e0b\u62c9\u83dc\u5355</option>', '<option value="modules/dropdown.html#contextmenu">contextmenu \u53f3\u952e\u83dc\u5355</option>', '<option value="modules/transfer.html">transfer \u7a7f\u68ad\u6846</option>', '<option value="modules/tree.html">tree \u6811\u5f62\u83dc\u5355</option>', '<option value="modules/colorpicker.html">colorpicker \u989c\u8272\u9009\u62e9\u5668</option>', '<option value="modules/element.html">element \u5e38\u7528\u5143\u7d20\u64cd\u4f5c</option>', '<option value="modules/slider.html">slider \u6ed1\u5757</option>', '<option value="modules/rate.html">rate \u8bc4\u5206</option>', '<option value="modules/carousel.html">carousel \u8f6e\u64ad/\u8dd1\u9a6c\u706f</option>', '<option value="modules/layedit.html">layedit \u5bcc\u6587\u672c\u7f16\u8f91\u5668</option>', '<option value="modules/flow.html">flow \u4fe1\u606f\u6d41/\u56fe\u7247\u61d2\u52a0\u8f7d</option>', '<option value="modules/util.html">util \u5de5\u5177\u96c6</option>', '<option value="modules/code.html">code \u4ee3\u7801\u6587\u672c\u884c\u4fee\u9970</option>', '<option value="https://' + m.devHost + '/themes/layim/">layim</option>', '<option value="https://' + m.devHost + '/themes/layuiAdmin/">layuiadmin</option>', "</select>", '<i class="layui-icon layui-icon-search"></i>'].join("")),
+    _ = a("<div></div>"),
     a(".component").append(_),
     s.render("select", "LAY-site-header-component"),
     s.on("select(component)", function(e) {
@@ -133,44 +133,7 @@ layui.define(["code", "element", "table", "util", "carousel", "laytpl"], functio
                 })
             }, 500)
         }
-    }), y = (a.get("https://" + m.devHost + "/get/cors/spread/", function(e) {
-        for (var t in e)
-            f[t] && f[t](e[t])
-    }, "jsonp"),
-    _ = a(".site-menu .layui-menu-body-title"),
-    s = a(".site-demo-nav dd"),
-    t = p.pathname.join("/"),
-    a(".layui-header .layui-nav-item").each(function() {
-        var e = a(this)
-          , t = p.pathname.concat();
-        if ("v2" === t[0] && t.splice(0, 1),
-        t[0] && t[0] === e.data("dir"))
-            return e.addClass("layui-this"),
-            !1
-    }),
-    _.each(function() {
-        var e = a(this);
-        if (e.children("a").attr("href") === "/" + t)
-            return e.parent().addClass("layui-menu-item-checked2"),
-            !1
-    }),
-    s.each(function() {
-        var e = a(this);
-        if (e.find(">a").attr("href") === "/" + t)
-            return e.addClass("layui-this"),
-            !1
-    }),
-    a(".site-demo-table-nav .layui-nav-item").each(function() {
-        var e = a(this);
-        if (e.find(">a").attr("href") === "/" + t)
-            return e.addClass("layui-this"),
-            !1
-    }),
-    _ = ['<a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">\u8d63ICP\u59072021008982\u53f7</a>', '\u672c\u7ad9\u6258\u7ba1\u4e8e<a href="https://gitee.com/" target="_blank">Gitee Pages</a>'],
-    s = a("#LAY-footer-info"),
-    /layuion\.com/.test(location.hostname) ? s.append(_[0]) : s.append(_[1]),
-    a(".site-showv").html(layui.v),
-    a("#getStars"));
+    });
     function g() {
         var e = a(window).scrollTop();
         a(window).width() <= 992 || (a(".footer").offset().top,
@@ -181,9 +144,6 @@ layui.define(["code", "element", "table", "util", "carousel", "laytpl"], functio
             width: "auto"
         }))
     }
-    y[0] && a.get("https://api.github.com/repos/layui/layui", function(e) {
-        y.html(e.stargazers_count)
-    }, "json"),
     u.fixbar({
         showHeight: 60,
         css: function() {
@@ -191,7 +151,10 @@ layui.define(["code", "element", "table", "util", "carousel", "laytpl"], functio
                 return {
                     bottom: 75
                 }
-        }()
+        }(),
+        click: function(){
+            console.log('返回顶部')
+        }
     }),
     i = a(".site-menu"),
     g(),
@@ -204,6 +167,13 @@ layui.define(["code", "element", "table", "util", "carousel", "laytpl"], functio
     layui.code({
         elem: "pre"
     });
+    /* 向返回顶部按钮添加类 开始 */
+    var backTops = a('li[lay-type$="top"]').parent('ul');
+    console.log(backTops);
+    for(var i=0;i<backTops.length;i++){
+        a(backTops[i]).addClass("back-top-btn"); 
+    }
+    /* 向返回顶部按钮添加类 结束 */
     function b() {
         var e;
         k[0] && (e = x.val(),

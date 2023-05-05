@@ -294,8 +294,8 @@
         <!-- 返回顶部按钮 -->
         <script>
             window.global = {
-                pageType: 'demo'
-                , preview: function () {
+                pageType: 'demo',
+                preview: function () {
                     var preview = document.getElementById('LAY_preview');
                     return preview ? preview.innerHTML : '';
                 }()
@@ -353,7 +353,6 @@
                     var othis = $(this), method = othis.data('method');
                     active[method] ? active[method].call(this, othis) : '';
                 });
-
             });
         </script>
 

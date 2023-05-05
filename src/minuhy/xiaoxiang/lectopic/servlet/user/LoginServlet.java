@@ -127,7 +127,7 @@ public class LoginServlet extends BaseServlet {
 					
 					session.removeAttribute(ConstantsConfig.SESSION_LOGIN_SOURCE);
 
-					String welcome = "»¶Ó­Äã£¬" + userEntity.getNick();
+					String welcome = "»¶Ó­Äã"+ "<br>" + userEntity.getNick()+ "<br>";
 					switch (role) {
 					case 0:
 						welcome += "£¨Í¬Ñ§£©";

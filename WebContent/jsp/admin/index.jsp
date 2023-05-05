@@ -93,7 +93,7 @@
                                     <h2 class="font-40p">
                                     	<jsp:getProperty property="selectedCount" name="adminIndex"/>
 									</h2>
-                                    <p class="font-16p">系统中已选总数</p>
+                                    <p class="font-16p">系统中已选题总数</p>
                                     <a class="layui-btn  layui-btn-primary" href="#">管理选题情况</a>
                                 </div>
                             </div>

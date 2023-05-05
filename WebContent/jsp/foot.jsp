@@ -11,10 +11,11 @@
 <!-- 返回顶部按钮 -->
 <script>
     window.global = {
-        pageType: 'demo'
-        , preview: function () {
-            var preview = document.getElementById('LAY_preview');
-            return preview ? preview.innerHTML : '';
+        pageType: 'demo', // 让其在电脑模式下会上60px以避开页脚
+        preview: function () {
+            // var preview = document.getElementById('LAY_preview');
+            // return preview ? preview.innerHTML : '';
+        	return '';
         }()
     };
 </script>
