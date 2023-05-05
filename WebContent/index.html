@@ -17,6 +17,7 @@
     <!-- 引入样式 -->
     <link rel="stylesheet" href="common/layui-2.7.6/css/layui.css">
     <link rel="stylesheet" href="common/lectopic/css/common.css">
+    <link rel="stylesheet" href="common/lectopic/css/profile.css">
 
     <!-- 图标 -->
     <link rel="shortcut icon" href="common/lectopic/ico/favicon.ico">
@@ -37,7 +38,8 @@
                 <!-- 上方导航菜单栏 -->
                 <ul class="layui-nav" id="LAY_NAV_TOP">
                     <li class="layui-nav-item">
-                        <a href="/v2/docs/"><span class="padding-0v-15h">管理</span><span class="layui-badge">99</span></a>
+                        <a href="/v2/docs/"><span class="padding-0v-15h">管理</span><span
+                                class="layui-badge">99</span></a>
                     </li>
                     <li id="logoutLi" class="layui-nav-item">
                         <a id="logoutBtn" data-method="logout" href="javascript:;">退出</a>
@@ -62,14 +64,19 @@
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;">修改资料</a>
+                        <a href="javascript:;">修改基本资料</a>
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;">修改密码</a>
+                        <a href="javascript:;">修改其他资料</a>
                     </li>
 
-                   
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">修改账号密码</a>
+                    </li>
+
+
 
                     <li class="layui-nav-item" style="height: 30px; text-align: center"></li>
                 </ul>
@@ -82,72 +89,71 @@
             <div class="layui-main">
                 <!-- 主内容 内容 开始 -->
                 <!-- **************************************************************************************************** -->
+                
+        <div class="text-c padding-20all">
+            <p>哔哩哔哩：<a style="color: blue;" href="https://space.bilibili.com/32778000">敏Ymm</a></p>
+            <p>博客园：<a style="color: blue;" href="https://www.cnblogs.com/minuhy">清风来叙</a></p>
+            <p>GitHub：<a style="color: blue;" href="https://github.com/minuhy">Minuhy</a></p>
+            <p>CSDN：<a style="color: blue;" href="https://blog.csdn.net/XiaoYuHaoAiMin">_清风来叙</a></p>
+            <p>码云：<a style="color: blue;" href="https://gitee.com/minuhy">清风来叙</a></p>
+        </div>
+
                 <div class="layui-row">
                     <div class="layui-col-md12">
                         <div class="layui-panel padding-30all text-c">
-                            <img alt="<%= userBean.getNick() %>的头像" src="<%= currentPath + userBean.getAvatarPath() %>" width="120" height="120" class="img-circle img-thumbnail">
+                            <img id="userAvatarImg" alt="<%= userBean.getNick() %>的头像" src="<%= currentPath + userBean.getAvatarPath() %>"
+                                width="120" height="120" class="img-circle img-thumbnail">
+
                             <div class="padding-20all">
-                                <h2 class="font-30p text-over">
-                                    用户昵称
-                                </h2>
-                                <h6 class="font-w">管理员</h6>
+                                <div id="chooseAvatar" data-method="chooseAvatar" class="layui-btn layui-btn-primary">
+                                    更换头像</div>
                             </div>
-                            <p>上一次登录网络节点地址：255.255.255.255</p>
-                            <p>上一次登录时间：2023-05-04 14:25</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-row">
-                    <div class="layui-col-md12">
-                        <h1 class="font-30p margin-20v-10h ">基本资料</h1>
-                    </div>
-                </div>
-                <div class="layui-panel padding-20all">
-                    <div class="layui-row margin-10all">
-                        <div class="layui-col-md3 layui-col-xs4 layui-col-xs text-c">
-                            <p class="font-20p">昵称</p>
-                        </div>
-                        <div class="layui-col-md9 layui-col-xs8">
-                            <p class="font-20p">小鱼</p>
-                        </div>
-                    </div>
-                    <div class="layui-row margin-10all">
-                        <div class="layui-col-md3 layui-col-xs4 text-c">
-                            <p class="font-20p">性别</p>
-                        </div>
-                        <div class="layui-col-md9 layui-col-xs8">
-                            <p class="font-20p">男</p>
-                        </div>
-                    </div>
-                    <div class="layui-row margin-10all">
-                        <div class="layui-col-md3 layui-col-xs4 text-c">
-                            <p class="font-20p">邮箱</p>
-                        </div>
-                        <div class="layui-col-md9 layui-col-xs8">
-                            <p class="font-20p">
-                                35543146564@qq.com
-                                <span class="color-gray font-14p">（仅自己和老师可见）</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="layui-row margin-10all">
-                        <div class="layui-col-md3 layui-col-xs4 text-c">
-                            <p class="font-20p">手机</p>
-                        </div>
-                        <div class="layui-col-md9 layui-col-xs8">
-                            <p class="font-20p">
-                                13243606177
-                                <span class="color-gray font-14p">（仅自己和老师可见）</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="layui-row margin-10all">
-                        <div class="layui-col-md3 layui-col-xs4 text-c">
-                            <p class="font-20p">签名</p>
-                        </div>
-                        <div class="layui-col-md9 layui-col-xs8">
-                            <p class="font-20p">ui 之所以赢得如此多人的青睐，更多是在于它“前后界面兼备”的能力。既可编织出绚丽的前台页面，又可满足繁杂的管理系统的界面需求。
-                                layui 管理基本布局， 致力于让每一位开发者都能轻松搭建自己的管理系统模板。</p>
+
+                            <form class="layui-form layui-form-pane" action="">
+                                <!-- 头像 -->
+                            	<input id="avatarInput" name="avatar" type="hidden" value="" >
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">昵称</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="nick" required="" placeholder="请设置昵称"
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">性别</label>
+                                    <div class="layui-input-block">
+                                        <select name="sex" title="请设置性别">
+                                            <option value="0">不设置</option>
+                                            <option value="1">男</option>
+                                            <option value="2">女</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">邮箱</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="email" placeholder="请设置邮箱" autocomplete="off"
+                                            class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">手机</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="phone" required="" placeholder="请设置手机号"
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">签名</label>
+                                    <div class="layui-input-block">
+                                        <textarea placeholder="请设置签名" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <button class="layui-btn">保存基本资料</button>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -174,8 +180,8 @@
                             <p class="font-20p">玉米子</p>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="layui-row margin-10all">
                         <div class="layui-col-md3 layui-col-xs4 text-c">
                             <p class="font-20p">院系</p>
@@ -192,8 +198,8 @@
                             <p class="font-20p">计算机应用</p>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="layui-row margin-10all">
                         <div class="layui-col-md3 layui-col-xs4 text-c">
                             <p class="font-20p">年级</p>
@@ -210,11 +216,11 @@
                             <p class="font-20p">1班</p>
                         </div>
                     </div>
-                    
+
                 </div>
 
 
-                
+
                 <div class="layui-row">
                     <div class="layui-col-md12">
                         <h1 class="font-30p margin-20v-10h">教师资料</h1>
@@ -237,7 +243,7 @@
                             <p class="font-20p">玉米子</p>
                         </div>
                     </div>
-                    
+
                     <div class="layui-row margin-10all">
                         <div class="layui-col-md3 layui-col-xs4 text-c">
                             <p class="font-20p">职称</p>
@@ -283,6 +289,7 @@
         </div>
         <!-- 主内容 结束 -->
 
+
         <!-- 页脚 开始 -->
         <div class="layui-footer footer footer-demo">
             <p>
@@ -313,6 +320,7 @@
         <!-- 引入 Layui -->
         <script src="common/layui-2.7.6/layui.js"></script>
         <script>
+            var currentPath="";
             // 引入 Layui 模块
             layui.config({
                 base: 'common/static/js/'
@@ -355,7 +363,6 @@
                 });
             });
         </script>
-
         <script>
             layui.use('layer', function () { //独立版的layer无需执行这一句
                 var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
@@ -367,6 +374,8 @@
                 });
             });
         </script>
+
+        <script src="common/lectopic/js/profile.js"></script>
     </div>
 </body>
 

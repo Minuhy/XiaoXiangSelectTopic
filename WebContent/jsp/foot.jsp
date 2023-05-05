@@ -42,6 +42,8 @@
 <script src="<%= currentPath %>/common/layui-2.7.6/layui.js" type="text/javascript"></script>
 
 <script>
+	// 当前路径
+	var currentPath="<%= currentPath %>/";
     // 引入 Layui 模块
     layui.config({
         base: '<%= currentPath %>/common/static/js/'

@@ -63,7 +63,7 @@ switch(sta) {
 	<!-- 中间布局 -->
     <div class="layui-container">
         <div class="layui-row">
-            <div class="layui-col-md8 layui-col-md-offset2 msg-panel">
+            <div class="layui-col-md10 layui-col-md-offset1 msg-panel">
                 <!-- 卡片视图 -->
                 <div class="layui-card msg-card">
                     <div class="layui-card-header msg-title <%= color %>">

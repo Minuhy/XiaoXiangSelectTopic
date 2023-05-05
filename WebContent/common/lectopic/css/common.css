@@ -238,6 +238,10 @@ body{
     color: purple;
 }
 
+.hidden-display{
+    display: none;
+}
+
 /*返回顶部*/
 @media screen and (max-width: 992px){
     .back-top-btn{

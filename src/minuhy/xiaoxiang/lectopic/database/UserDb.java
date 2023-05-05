@@ -163,4 +163,43 @@ public class UserDb extends Executant {
 		}
 		return result > 0;
 	}
+
+	/**
+	 * 更新资料
+	 * @param userEntity 用户资料
+	 * @return true 成功 
+	 * @throws SQLException
+	 * @time 2023-5-5 22:01:47
+	 */
+	public boolean UpdateProfile(UserEntity userEntity) throws SQLException {
+		String sql = "UPDATE `t_user` " + 
+				"SET `nick` = ?, `signature` = ?, `sex` = ?, `email` = ?, `phone` = ?, `avatar` = ?,`update_timestamp`=?,`update_by`=? " + 
+				"WHERE `id` = ?";
+
+		if (CommonConfig.isDebug()) {
+			log.debug("更新个人资料：{}，{}", sql, userEntity);
+		}
+
+		int result = 0;
+		try {
+			result = update(sql, 
+					userEntity.getNick(),
+					userEntity.getSignature(),
+					String.valueOf(userEntity.getSex()),
+					userEntity.getEmail(),
+					userEntity.getPhone(),
+					userEntity.getAvatar(),
+					String.valueOf(userEntity.getUpdateTimestamp()),
+					String.valueOf(userEntity.getUpdateBy()),
+					String.valueOf(userEntity.getId())
+				);
+
+			if (CommonConfig.isDebug()) {
+				log.debug("更新数据：{}", result);
+			}
+		} finally {
+			close();
+		}
+		return result > 0;
+	}
 }

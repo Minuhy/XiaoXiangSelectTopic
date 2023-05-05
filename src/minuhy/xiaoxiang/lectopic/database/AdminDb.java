@@ -42,7 +42,9 @@ public class AdminDb extends BaseDb{
 	 */
 	public int selectTeacherCount() {
 		String sql = "SELECT COUNT(*) AS `count` FROM `t_teacher`";
-
+		if(true)
+		throw new NullPointerException();
+		
 		if (CommonConfig.isDebug()) {
 			log.debug("查找老师总数：{}", sql);
 		}

@@ -19,14 +19,9 @@
 		<jsp:include page="/jsp/navigation.jsp">
 			<jsp:param value="<%= role %>" name="role"/>
 			<jsp:param value="my" name="panel"/>
+			<jsp:param value="1" name="curPage"/>
 		</jsp:include>
-		
-		<jsp:useBean id="adminIndex" scope="application" class="minuhy.xiaoxiang.lectopic.bean.admin.AdminIndexBean"></jsp:useBean>
-		
-		<%
-		adminIndex.updateData();
-		%>
-		
+				
 	    <!-- 主内容 开始 -->
 	    <div class="layui-body site-demo">
 	        <div class="layui-main">
@@ -95,7 +90,7 @@
                         </div>
                         <div class="layui-col-md9 layui-col-xs8">
                             <p class="font-20p">
-                            	<%= userBean.getEmail() %>
+                            	<%= userBean.getEmail().equals("")?"未设置":userBean.getEmail() %>
                                 <% if(userBean.getRole() == RoleConfig.STUDENT) { %>
                                 	<span class="color-gray font-14p">（仅自己和老师可见）</span>
                                 <% } %>
@@ -108,7 +103,7 @@
                         </div>
                         <div class="layui-col-md9 layui-col-xs8">
                             <p class="font-20p">
-                            	<%= userBean.getPhone() %>
+                            	<%= userBean.getPhone().equals("")?"未设置":userBean.getPhone() %>
                                 <% if(userBean.getRole() == RoleConfig.STUDENT) { %>
                                 	<span class="color-gray font-14p">（仅自己和老师可见）</span>
                                 <% } %>
@@ -121,7 +116,7 @@
                         </div>
                         <div class="layui-col-md9 layui-col-xs8">
                             <p class="font-20p">
-                            	<%= userBean.getSignature() %>
+                            	<%= userBean.getSignature().equals("")?"未设置":userBean.getSignature() %>
                             </p>
                         </div>
                     </div>

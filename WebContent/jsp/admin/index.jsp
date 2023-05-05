@@ -24,6 +24,7 @@
 		
 		<%
 		adminIndex.updateData();
+		System.out.println("更新数据");
 		%>
 		
 	    <!-- 主内容 开始 -->
@@ -113,6 +114,28 @@
 	
 		<!-- 页脚 -->
 		<jsp:include page="/jsp/foot.jsp"></jsp:include>
+		
+		<div id="linkWePanel" class="hidden-display">
+            <div class="text-c padding-10all">
+                <p>哔哩哔哩：<a style="color: blue;" href="https://space.bilibili.com/32778000">敏Ymm</a></p>
+                <p>博客园：<a style="color: blue;" href="https://www.cnblogs.com/minuhy">清风来叙</a></p>
+                <p>GitHub：<a style="color: blue;" href="https://github.com/minuhy">Minuhy</a></p>
+                <p>CSDN：<a style="color: blue;" href="https://blog.csdn.net/XiaoYuHaoAiMin">_清风来叙</a></p>
+                <p>码云：<a style="color: blue;" href="https://gitee.com/minuhy">清风来叙</a></p>
+            </div>
+        </div>
+        
+        <script>
+            layui.use('layer', function () { //独立版的layer无需执行这一句
+                var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+                $('#linkWe').on('click', function () {
+                    layer.open({
+                        title: '联系我们'
+                        , content: $('#linkWePanel').html()
+                    });
+                });
+            });
+        </script>
 	</div>
 </body>
 

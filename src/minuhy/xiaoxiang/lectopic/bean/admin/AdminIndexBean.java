@@ -1,5 +1,8 @@
 package minuhy.xiaoxiang.lectopic.bean.admin;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import minuhy.xiaoxiang.lectopic.bean.common.BaseBean;
 import minuhy.xiaoxiang.lectopic.bean.common.UpdateDataBean;
 import minuhy.xiaoxiang.lectopic.database.AdminDb;
@@ -12,6 +15,7 @@ import minuhy.xiaoxiang.lectopic.database.AdminDb;
  * @version 1.0
  */
 public class AdminIndexBean extends BaseBean implements UpdateDataBean{
+	private static final Logger log = LoggerFactory.getLogger(AdminIndexBean.class);
 	/**
 	 * 学生数量
 	 */
@@ -48,6 +52,7 @@ public class AdminIndexBean extends BaseBean implements UpdateDataBean{
 			selectedCount = db.selectSelectedCount();
 			return true;
 		}catch (Exception e) {
+			log.error("查询数据库时出错：{}",e);
 			return false;
 		}
 	}

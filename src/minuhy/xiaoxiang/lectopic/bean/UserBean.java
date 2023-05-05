@@ -26,6 +26,11 @@ public class UserBean {
 		return userEntity.getAccount();
 	}
 	
+	
+	public UserEntity getUserEntity() {
+		return userEntity;
+	}
+
 	/**
 	 * 获取性别（字符）
 	 * @return 性别
@@ -40,7 +45,16 @@ public class UserBean {
 			return "女";
 		}
 		
-		return "未设置";
+		return "保密";
+	}
+	
+	/**
+	 * 设置性别
+	 * @return 性别 0：保密，1：男，2：女
+	 * @time 2023-5-5 20:08:37
+	 */
+	public int getSex() {
+		return userEntity.getSex();
 	}
 	
 	/**
@@ -49,7 +63,7 @@ public class UserBean {
 	 * @time 2023-5-5 0:55:22
 	 */
 	public String getEmail() {
-		return TextUtil.getString(userEntity.getEmail(), "未设置");
+		return TextUtil.getString(userEntity.getEmail(), "");
 	}
 	
 	/**
@@ -58,7 +72,7 @@ public class UserBean {
 	 * @time 2023-5-5 0:56:34
 	 */
 	public String getPhone() {
-		return TextUtil.getString(userEntity.getPhone(), "未设置");
+		return TextUtil.getString(userEntity.getPhone(), "");
 	}
 	
 	/**
@@ -67,7 +81,7 @@ public class UserBean {
 	 * @time 2023-5-5 0:57:31
 	 */
 	public String getSignature() {
-		return TextUtil.getString(userEntity.getSignature(), "未设置");
+		return TextUtil.getString(userEntity.getSignature(), "");
 	}
 	
 	

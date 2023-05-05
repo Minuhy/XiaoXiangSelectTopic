@@ -176,6 +176,10 @@ public class UserEntity {
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
+	public void setId(int id) {
+		this.id = id;
+	}
     
     public UserEntity() {}
 
@@ -227,5 +231,6 @@ public class UserEntity {
                 ", remark='" + remark + '\'' +
                 '}';
     }
+    
 }
 

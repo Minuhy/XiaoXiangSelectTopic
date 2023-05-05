@@ -1,0 +1,13 @@
+.avatar-img{
+    padding: 10px;
+    height: 400px;
+}
+.avatar-img img{
+    margin: 4px 2px;
+    padding: 10px;
+    border: 1px #ddd solid;
+    border-radius: 4px;
+}
+.img-choose{
+    background-color: #999;
+}

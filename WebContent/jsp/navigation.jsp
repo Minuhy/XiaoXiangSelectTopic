@@ -17,7 +17,7 @@ if(!"my".equals(panel)){
 
 String curPage = request.getParameter("curPage");
 
-int maxPage,minPage;
+int maxPage=0,minPage=0;
 if(curPage != null){
 	if(curPage.contains(".")){
 		String[] curPages = curPage.split(".");
@@ -36,7 +36,6 @@ if(curPage != null){
 		}
 	}
 }else{
-	maxPage = minPage = 0;
 	if(CommonConfig.isDebug()){
 		log.debug("导航栏位置为空");
 	}
@@ -86,20 +85,30 @@ if(curPage != null){
     <div class="layui-side-scroll">
         <ul class="layui-nav layui-nav-tree site-demo-nav">
             <% if("my".equals(panel)) { %>
-				<li class="layui-nav-item layui-this">
+				<li class="layui-nav-item <%= maxPage==1?"layui-this":"" %>">
                     <a href="<%= currentPath %>/jsp/common/my.jsp">我的资料</a>
                 </li>
 
-                <li class="layui-nav-item">
+                <li class="layui-nav-item <%= maxPage==2?"layui-this":"" %>">
                     <a href="javascript:;">我的消息<span class="layui-badge">666469+</span></a>
                 </li>
 
-                <li class="layui-nav-item">
-                    <a href="javascript:;">修改资料</a>
+                <li class="layui-nav-item <%= maxPage==3?"layui-this":"" %>">
+                    <a href="<%= currentPath %>/jsp/common/profile.jsp">修改基本资料</a>
                 </li>
+                
+                <% if(RoleConfig.STUDENT_S.equals(role)){ %>
+	                <li class="layui-nav-item <%= maxPage==4?"layui-this":"" %>">
+	                    <a href="javascript:;">修改学生资料</a>
+	                </li>
+	            <% }else if(RoleConfig.TEACHER_S.equals(role)){ %>
+	                <li class="layui-nav-item <%= maxPage==5?"layui-this":"" %>">
+	                    <a href="javascript:;">修改教师资料</a>
+	                </li>
+	            <% } %>
 
-                <li class="layui-nav-item">
-                    <a href="javascript:;">修改密码</a>
+                <li class="layui-nav-item <%= maxPage==6?"layui-this":"" %>">
+                    <a href="javascript:;">修改登录密码</a>
                 </li>
         	<% } else if("other".equals(panel)) { %>
         		<!-- 其他界面 开始 -->
