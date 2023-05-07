@@ -29,5 +29,9 @@ public class InitListener implements ServletContextListener {
 		String pwd = TextUtil.getRandomString(6);
 		event.getServletContext().setAttribute(ConstantsConfig.APPLICATION_ADMIN_PWD, pwd);
 		log.info("管理员默认密码：{}", pwd);
+		// 应用路径
+		String ContextPath = event.getServletContext().getContextPath();
+		event.getServletContext().setAttribute(ConstantsConfig.APPLICATION_CONTENT_PATH, ContextPath);
+		log.info("应用路径：{}", ContextPath);
 	}
 }

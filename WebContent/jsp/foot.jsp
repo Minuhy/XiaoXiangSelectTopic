@@ -62,7 +62,7 @@
                     type: 1
                     , title: "退出登录" //显示标题栏
                     , closeBtn: false
-                    , area: '260px;'
+                    , area: '300px;'
                     , shade: 0.8
                     , time: 20000 //20s后自动关闭
                     , id: 'logout_tips' //设定一个id，防止重复弹出

@@ -48,4 +48,8 @@ public class ConstantsConfig {
 	 * 保存在application中的管理员密码，使用一次后删除
 	 */
 	public static final String APPLICATION_ADMIN_PWD = "appAdminPwd";
+	/**
+	 * 应用路径
+	 */
+	public static final String APPLICATION_CONTENT_PATH = "appContentPath";
 }

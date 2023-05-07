@@ -18,13 +18,14 @@
 		<jsp:include page="/jsp/navigation.jsp">
 			<jsp:param value="<%= role %>" name="role"/>
 			<jsp:param value="<%= role %>" name="panel"/>
+			<jsp:param value="1" name="curPage"/>
 		</jsp:include>
 		
 		<jsp:useBean id="adminIndex" scope="application" class="minuhy.xiaoxiang.lectopic.bean.admin.AdminIndexBean"></jsp:useBean>
 		
 		<%
 		adminIndex.updateData();
-		System.out.println("更新数据");
+		//System.out.println("更新数据");
 		%>
 		
 	    <!-- 主内容 开始 -->
@@ -57,44 +58,44 @@
                         <h1 class="font-30p margin-20down margin-10all">概览</h1>
                         <div class="layui-col-md3">
                             <div class="layui-panel margin-10all">
-                                <div class="padding-30all text-c">
+                                <div class="padding-30v-0h text-c">
                                     <h2 class="font-40p">
                                     	<jsp:getProperty property="studentCount" name="adminIndex"/>
 									</h2>
-                                    <p class="font-16p">系统中学生总人数</p>
+                                    <p class="font-16p padding-5all">系统中学生总人数</p>
                                     <a class="layui-btn  layui-btn-primary" href="#">管理学生数据</a>
                                 </div>
                             </div>
                         </div>
                          <div class="layui-col-md3">
                             <div class="layui-panel margin-10all">
-                                <div class="padding-30all text-c">
+                                <div class="padding-30v-0h text-c">
                                     <h2 class="font-40p">
                                     	<jsp:getProperty property="teacherCount" name="adminIndex"/>
 									</h2>
-                                    <p class="font-16p">系统中教师总人数</p>
+                                    <p class="font-16p padding-5all">系统中教师总人数</p>
                                     <a class="layui-btn  layui-btn-primary" href="#">管理教师数据</a>
                                 </div>
                             </div>
                         </div>
                         <div class="layui-col-md3">
                             <div class="layui-panel margin-10all">
-                                <div class="padding-30all text-c">
+                                <div class="padding-30v-0h text-c">
                                     <h2 class="font-40p">
                                     	<jsp:getProperty property="topicCount" name="adminIndex"/>
 									</h2>
-                                    <p class="font-16p">系统中选题总数量</p>
+                                    <p class="font-16p padding-5all">系统中选题总数量</p>
                                     <a class="layui-btn  layui-btn-primary" href="#">管理选题数据</a>
                                 </div>
                             </div>
                         </div>
                         <div class="layui-col-md3">
                             <div class="layui-panel margin-10all">
-                                <div class="padding-30all text-c">
+                                <div class="padding-30v-0h text-c">
                                     <h2 class="font-40p">
                                     	<jsp:getProperty property="selectedCount" name="adminIndex"/>
 									</h2>
-                                    <p class="font-16p">系统中已选题总数</p>
+                                    <p class="font-16p padding-5all">系统中已选题总数</p>
                                     <a class="layui-btn  layui-btn-primary" href="#">管理选题情况</a>
                                 </div>
                             </div>

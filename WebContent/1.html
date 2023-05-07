@@ -1,0 +1,191 @@
+<html lang="zh-cmn-Hans-CN">
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="潇湘毕设选题系统 - 程序设计：信息学院计应教研室">
+    <meta name="author" content="玉米子">
+
+    <script>
+        ; !function () { self !== parent && (location.href = "about:blank") }();
+    </script>
+
+    <title>提示 - 毕设选题系统</title>
+
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="common/layui-2.7.6/css/layui.css">
+    <link rel="stylesheet" href="common/lectopic/css/common.css">
+
+    <!-- 图标 -->
+    <link rel="shortcut icon" href="common/lectopic/favicon/favicon.ico">
+
+
+
+    <link rel="stylesheet" href="common/lectopic/css/message.css">
+    <link id="layuicss-laydate" rel="stylesheet"
+        href="http://127.0.0.1:8080common/layui-2.7.6/css/modules/laydate/default/laydate.css?v=5.3.1" media="all">
+    <link id="layuicss-layer" rel="stylesheet"
+        href="http://127.0.0.1:8080common/layui-2.7.6/css/modules/layer/default/layer.css?v=3.5.1" media="all">
+    <link id="layuicss-skincodecss" rel="stylesheet"
+        href="http://127.0.0.1:8080common/layui-2.7.6/css/modules/code.css?v=3" media="all"><input type="hidden"
+        id="_w_simile" data-inspect-config="3">
+    <script type="text/javascript"
+        src="chrome-extension://odphnbhiddhdpoccbialllejaajemdio/scripts/inspector.js"></script>
+</head>
+
+<body>
+
+    <!-- 中间布局 -->
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md10 layui-col-md-offset1 msg-panel">
+                <!-- 卡片视图 -->
+                <div class="layui-card msg-card">
+                    <div class="layui-card-header msg-title msg-title-bg-success">
+                        <h1>成功</h1>
+                    </div>
+                    <div class="layui-card-body msg-content">
+                        <p>退出登录成功</p>
+                    </div>
+                    <a href="login.jsp" class="layui-btn">继续</a>
+
+                    <p class="color-gray auto-text">三秒后自动继续</p>
+
+                </div>
+                <!-- 卡片视图 -->
+            </div>
+        </div>
+    </div>
+    <!-- 中间布局 -->
+
+
+
+
+
+    <div class="padding-30all">
+        <hr>
+    </div>
+
+    <!-- 页脚 -->
+
+    <style>
+        .footer-common {
+            height: auto;
+            padding: 30px 15px;
+            line-height: 30px;
+            text-align: center;
+            color: #666;
+            font-weight: 300;
+            line-height: 30px;
+            padding-top: 100px;
+        }
+    </style>
+
+
+    <!-- 页脚 开始 -->
+    <div class="layui-footer footer-common">
+        <p>由 <a class="color-purple" href="https://space.bilibili.com/32778000">敏Ymm</a> 使用 <a class="color-purple"
+                href="https://www.java.com/zh-CN/">Java</a> 制作</p>
+    </div>
+    <!-- 页脚 开始 -->
+
+    <!-- 返回顶部按钮 -->
+    <script>
+        window.global = {
+            pageType: 'demo', // 让其在电脑模式下会上60px以避开页脚
+            preview: function () {
+                // var preview = document.getElementById('LAY_preview');
+                // return preview ? preview.innerHTML : '';
+                return '';
+            }()
+        };
+    </script>
+
+    <!-- 手机侧边栏打开开关 -->
+    <div class="site-tree-mobile layui-hide">
+        <i class="layui-icon layui-icon-spread-left"></i>
+    </div>
+
+    <!-- 手机侧边栏关闭区域 -->
+    <div class="site-mobile-shade"></div>
+
+
+    <!-- 引入JavaScript脚本文件 -->
+    <!-- 放置在文档末尾，以便页面加载更快 -->
+
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+        <script src="common/html5shiv-r29/html5.min.js" type="text/javascript"></script>
+        <script src="common/respond.js-1.4.2/respond.min.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <!-- layui -->
+    <script src="common/layui-2.7.6/layui.js" type="text/javascript"></script>
+
+    <script>
+        // 当前路径
+        var currentPath = "";
+        // 引入 Layui 模块
+        layui.config({
+            base: 'common/static/js/'
+            , version: '1999'
+        }).use('global');
+    </script>
+
+    <!-- 退出登录的代码 -->
+    <script>
+        layui.use('layer', function () { //独立版的layer无需执行这一句
+            var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+            //触发事件
+            var active = {
+                logout: function () {
+                    layer.open({
+                        type: 1
+                        , title: "退出登录" //显示标题栏
+                        , closeBtn: false
+                        , area: '300px;'
+                        , shade: 0.8
+                        , time: 20000 //20s后自动关闭
+                        , id: 'logout_tips' //设定一个id，防止重复弹出
+                        , btn: ['确定', '取消']
+                        , btnAlign: 'c'
+                        , moveType: 0 //拖拽模式，0或者1
+                        , content: '<div style="text-align:center;padding:20px;font-size:18px;">确定要退出吗？</div>'
+                        , btn2: function (index, layero) {
+                            $("#logoutLi").removeClass("layui-this");
+                            console.log('取消退出');
+                            return true;
+                        }
+                        , btn1: function (index, layero) {
+                            window.location.href = "user/logout";
+                            console.log('退出登录');
+                            return true;
+                        }
+                    });
+                }
+            };
+
+            $('#logoutBtn').on('click', function () {
+                var othis = $(this), method = othis.data('method');
+                active[method] ? active[method].call(this, othis) : '';
+            });
+
+        });
+    </script>
+
+
+
+
+
+
+
+    <ul class="layui-fixbar back-top-btn" style="bottom: 75px;">
+        <li class="layui-icon layui-fixbar-top" lay-type="top"></li>
+    </ul>
+</body>
+
+</html>

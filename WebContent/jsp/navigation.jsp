@@ -4,6 +4,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/jsp/base.jsp" %>
 <%
+//是否全部展开
+boolean isAllTrue = true;
+
 // student teacher admin 
 // RoleConfig.STUDENT_S RoleConfig.TEACHER_S RoleConfig.ADMIN_S
 String role = request.getParameter("role");
@@ -16,12 +19,15 @@ if(!"my".equals(panel)){
 }
 
 String curPage = request.getParameter("curPage");
-
+//System.out.println(curPage);
 int maxPage=0,minPage=0;
 if(curPage != null){
 	if(curPage.contains(".")){
-		String[] curPages = curPage.split(".");
+		String[] curPages = curPage.split("\\."); // 这里写的是正则表达式
+		//System.out.println("长度：" + curPages.length);
 		try{
+			//System.out.println("curPages[0]" + curPages[0]);
+			//System.out.println("curPages[1]" + curPages[1]);
 			maxPage = Integer.parseInt(curPages[0]);
 			minPage = Integer.parseInt(curPages[1]);
 		}catch (NumberFormatException e){
@@ -90,7 +96,7 @@ if(curPage != null){
                 </li>
 
                 <li class="layui-nav-item <%= maxPage==2?"layui-this":"" %>">
-                    <a href="javascript:;">我的消息<span class="layui-badge">666469+</span></a>
+                    <a href="<%= currentPath %>/jsp/common/mailbox.jsp">我的消息<span class="layui-badge">666469+</span></a>
                 </li>
 
                 <li class="layui-nav-item <%= maxPage==3?"layui-this":"" %>">
@@ -120,63 +126,63 @@ if(curPage != null){
 	            	<!-- 老师 结束 -->
 	            <% }else if(RoleConfig.ADMIN_S.equals(role)){ %>
 	            	<!-- 管理员 开始 -->
-					<li class="layui-nav-item layui-this">
+					<li class="layui-nav-item <%= maxPage==1 || isAllTrue?"layui-nav-itemed":"" %> <%= (maxPage==1&&minPage==0)?"layui-this":"" %>">
 		                <a href="<%= currentPath %>/jsp/admin/index.jsp">首页</a>
 		            </li>
 		
-		            <li class="layui-nav-item layui-nav-itemed">
-		                <a href="javascript:;">管理</a>
+		            <li class="layui-nav-item <%= maxPage==2 || isAllTrue?"layui-nav-itemed":"" %> <%= (maxPage==2&&minPage==0)?"layui-this":"" %>">
+		                <a href="javascript:;" >管理</a>
 		                <dl class="layui-nav-child">
-		                    <dd>
-		                        <a href="/v2/demo/grid.html">学生管理</a>
+		                    <dd class="<%= (maxPage==2&&minPage==1)?"layui-this":"" %>">
+		                        <a href="<%= currentPath %>/jsp/admin/manage/student.jsp">学生管理</a>
 		                    </dd>
-		                    <dd>
-		                        <a href="/v2/demo/admin.html">教师管理</a>
+		                    <dd class="<%= (maxPage==2&&minPage==2)?"layui-this":"" %>">
+		                        <a href="<%= currentPath %>/jsp/admin/manage/teacher.jsp">教师管理</a>
 		                    </dd>
-		                    <dd>
-		                        <a href="/v2/demo/admin.html">课题管理</a>
+		                    <dd class="<%= (maxPage==2&&minPage==3)?"layui-this":"" %>">
+		                        <a href="<%= currentPath %>/jsp/admin/manage/topic.jsp">课题管理</a>
 		                    </dd>
-		                    <dd>
-		                        <a href="/v2/demo/admin.html">选题管理</a>
+		                    <dd class="<%= (maxPage==2&&minPage==4)?"layui-this":"" %>">
+		                        <a href="<%= currentPath %>/jsp/admin/manage/select.jsp">选题管理</a>
 		                    </dd>
-		                    <dd>
-		                        <a href="/v2/demo/admin.html">组织架构管理</a>
+		                    <dd class="<%= (maxPage==2&&minPage==5)?"layui-this":"" %>">
+		                        <a href="<%= currentPath %>/jsp/admin/manage/organ.jsp">组织架构管理</a>
 		                    </dd>
 		                </dl>
 		            </li>
 		
-		            <li class="layui-nav-item">
+		            <li class="layui-nav-item <%= maxPage==3 || isAllTrue?"layui-nav-itemed":"" %> <%= (maxPage==3&&minPage==0)?"layui-this":"" %>">
 		                <a href="javascript:;">导入</a>
 		                <dl class="layui-nav-child">
-		                    <dd>
-		                        <a href="/v2/demo/grid.html">学生资料导入</a>
+		                    <dd class="<%= (maxPage==3&&minPage==1)?"layui-this":"" %>">
+		                        <a href="<%= currentPath %>/jsp/admin/import/student.jsp">学生资料导入</a>
 		                    </dd>
-		                    <dd>
-		                        <a href="/v2/demo/admin.html">教师资料导入</a>
+		                    <dd class="<%= (maxPage==3&&minPage==2)?"layui-this":"" %>">
+		                        <a href="<%= currentPath %>/jsp/admin/import/teacher.jsp">教师资料导入</a>
 		                    </dd>
-		                    <dd>
-		                        <a href="/v2/demo/admin.html">课题资料导入</a>
+		                    <dd class="<%= (maxPage==3&&minPage==3)?"layui-this":"" %>">
+		                        <a href="<%= currentPath %>/jsp/admin/import/topic.jsp">课题资料导入</a>
 		                    </dd>
 		                </dl>
 		            </li>
 		            
-		            <li class="layui-nav-item">
+		            <li class="layui-nav-item <%= maxPage==4 || isAllTrue?"layui-nav-itemed":"" %> <%= (maxPage==4&&minPage==0)?"layui-this":"" %>">
 		                <a href="javascript:;">工具</a>
 		                <dl class="layui-nav-child">
-		                    <dd>
-		                        <a href="/v2/demo/grid.html">重置账号密码</a>
+		                    <dd class="<%= (maxPage==4&&minPage==1)?"layui-this":"" %>">
+		                        <a href="<%= currentPath %>/jsp/admin/util/password.jsp">重置账号密码</a>
 		                    </dd>
-		                    <dd>
-		                        <a href="/v2/demo/grid.html">快速选题</a>
+		                    <dd class="<%= (maxPage==4&&minPage==2)?"layui-this":"" %>">
+		                        <a href="<%= currentPath %>/jsp/admin/util/select.jsp">快速选题</a>
 		                    </dd>
-		                    <dd>
-		                        <a href="/v2/demo/admin.html">高级工具</a>
+		                    <dd class="<%= (maxPage==4&&minPage==3)?"layui-this":"" %>">
+		                        <a href="<%= currentPath %>/jsp/admin/util/advance.jsp">高级工具</a>
 		                    </dd>
 		                </dl>
 		            </li>
 		            
-		            <li class="layui-nav-item">
-		                <a href="javascript:;">系统设置</a>
+		            <li class="layui-nav-item <%= maxPage==5 || isAllTrue?"layui-nav-itemed":"" %> <%= (maxPage==5&&minPage==0)?"layui-this":"" %>">
+		                <a href="<%= currentPath %>/jsp/admin/setting.jsp">系统设置</a>
 		            </li>
 		            <!-- 管理员 结束 -->
 	            <% } %>

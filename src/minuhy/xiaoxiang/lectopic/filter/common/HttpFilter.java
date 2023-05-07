@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import minuhy.xiaoxiang.lectopic.config.ConstantsConfig;
+
 /**
  * 将Servlet过滤器转换成Http过滤器，并做一些优化
  * 
@@ -70,7 +72,8 @@ public class HttpFilter implements Filter {
 			request = (HttpServletRequest) servletRequest;
 			response = (HttpServletResponse) servletResponse;
 			uri = request.getRequestURI();
-			currentPath = request.getContextPath();
+			currentPath = (String) request.getServletContext().getAttribute(ConstantsConfig.APPLICATION_CONTENT_PATH);
+			session = request.getSession();
 
 			if (httpIncoming()) {
 				filterChain.doFilter(servletRequest, servletResponse);
